@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="1017.0" prefWidth="1620.0" style="-fx-background-color: d9d9d9;" stylesheets="@../Styles/perfil.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.projeto.Controllers.PerfilController">
+   <AnchorPane layoutX="43.0" layoutY="41.0" prefHeight="500.0" prefWidth="700.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="860.0" AnchorPane.topAnchor="60.0">
+      <children>
+         <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#8fb9aa" height="500.0" layoutX="-230.0" layoutY="-56.0" stroke="#8fb9aa" strokeType="INSIDE" width="700.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         <Text fx:id="nome" fill="WHITE" layoutX="27.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="252.13671875">
+            <font>
+               <Font size="30.0" />
+            </font>
+         </Text>
+         <Label layoutX="27.0" layoutY="14.0" prefWidth="158.0" text="Nome:" />
+         <Text fx:id="id" fill="WHITE" layoutX="509.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="169.0">
+            <font>
+               <Font size="30.0" />
+            </font>
+         </Text>
+         <Label layoutX="509.0" layoutY="14.0" prefHeight="21.0" prefWidth="169.0" text="Número de Identificação:" />
+         <Text fx:id="cargo" fill="WHITE" layoutX="27.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="252.13671875">
+            <font>
+               <Font size="30.0" />
+            </font>
+         </Text>
+         <Label layoutX="27.0" layoutY="71.0" prefWidth="158.0" text="Cargo:" />
+         <Text fx:id="ntelemovel" fill="WHITE" layoutX="27.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="252.13671875">
+            <font>
+               <Font size="30.0" />
+            </font>
+         </Text>
+         <Label layoutX="27.0" layoutY="128.0" prefWidth="158.0" text="Número de Télemovel:" />
+         <Text fx:id="email" fill="WHITE" layoutX="27.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="500.13671875">
+            <font>
+               <Font size="30.0" />
+            </font>
+         </Text>
+         <Label layoutX="27.0" layoutY="185.0" prefWidth="158.0" text="Email:" />
+         <Text fx:id="nif" fill="WHITE" layoutX="27.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="252.13671875">
+            <font>
+               <Font size="30.0" />
+            </font>
+         </Text>
+         <Label layoutX="27.0" layoutY="243.0" prefWidth="158.0" text="NIF:" />
+         <Text fx:id="morada" fill="WHITE" layoutX="27.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="252.13671875">
+            <font>
+               <Font size="30.0" />
+            </font>
+         </Text>
+         <Label layoutX="27.0" layoutY="300.0" prefWidth="158.0" text="Morada:" />
+         <Text fx:id="localidade" fill="WHITE" layoutX="27.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="252.13671875">
+            <font>
+               <Font size="30.0" />
+            </font>
+         </Text>
+         <Label layoutX="27.0" layoutY="357.0" prefWidth="158.0" text="Localidade:" />
+         <Label layoutX="27.0" layoutY="414.0" prefWidth="158.0" text="Password:" />
+         <TextField fx:id="passShown" editable="false" layoutX="27.0" layoutY="438.0" prefHeight="25.0" prefWidth="252.0" />
+         <PasswordField fx:id="passHidden" editable="false" layoutX="27.0" layoutY="438.0" prefHeight="25.0" prefWidth="252.0" />
+         <CheckBox fx:id="passToggle" layoutX="27.0" layoutY="463.0" mnemonicParsing="false" text="Mostrar password" />
+      </children>
+   </AnchorPane>
+   <AnchorPane layoutX="810.0" layoutY="41.0" prefHeight="280.0" prefWidth="280.0" AnchorPane.leftAnchor="810.0" AnchorPane.topAnchor="60.0">
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#8fb9aa" height="280.0" layoutX="-230.0" layoutY="-56.0" stroke="#8fb9aa" strokeType="INSIDE" width="280.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Label layoutX="83.0" layoutY="14.0" prefHeight="36.0" prefWidth="114.0" text="Alterar password" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="51.0" prefWidth="158.0" text="Nova password:" />
+      <Label layoutX="14.0" layoutY="136.0" prefHeight="21.0" prefWidth="176.0" text="Confirmação de password:" />
+      <TextField fx:id="newPassShown" layoutX="14.0" layoutY="73.0" prefHeight="25.0" prefWidth="252.0" />
+      <PasswordField fx:id="newPassHidden" layoutX="14.0" layoutY="73.0" prefHeight="25.0" prefWidth="252.0" />
+      <CheckBox fx:id="newPassToggle" layoutX="14.0" layoutY="98.0" mnemonicParsing="false" text="Mostrar password" />
+      <PasswordField fx:id="confirmNewPassHidden" layoutX="14.0" layoutY="157.0" prefHeight="25.0" prefWidth="252.0" />
+      <Button fx:id="changePasswordBtn" layoutX="104.0" layoutY="229.0" mnemonicParsing="false" text="Alterar" AnchorPane.bottomAnchor="15.0" />
+      <Text fx:id="matchError" fill="WHITE" layoutX="14.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="252.13671875">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+   </AnchorPane>
+   <AnchorPane layoutX="60.0" layoutY="592.0" prefHeight="250.0" prefWidth="500.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="610.0">
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#8fb9aa" height="250.0" layoutX="-230.0" layoutY="-56.0" stroke="#8fb9aa" strokeType="INSIDE" width="500.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Label layoutX="224.0" layoutY="15.0" prefHeight="36.0" prefWidth="85.0" text="Alterar email" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="51.0" prefWidth="158.0" text="Novo email:" />
+      <Label layoutX="14.0" layoutY="111.0" prefHeight="21.0" prefWidth="176.0" text="Confirmação de email:" />
+      <TextField fx:id="newEmail" layoutX="14.0" layoutY="74.0" prefHeight="25.0" prefWidth="475.0" />
+      <Button fx:id="changeEmailBtn" layoutX="219.0" layoutY="205.0" mnemonicParsing="false" text="Alterar" />
+      <Text fx:id="matchErrorEmail" fill="WHITE" layoutX="125.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="252.13671875">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="newEmailConfirmation" layoutX="13.0" layoutY="132.0" prefHeight="25.0" prefWidth="475.0" />
+   </AnchorPane>
+   <AnchorPane layoutX="620.0" layoutY="610.0" prefHeight="250.0" prefWidth="485.0" AnchorPane.leftAnchor="610.0">
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#8fb9aa" height="250.0" layoutX="-230.0" layoutY="-56.0" stroke="#8fb9aa" strokeType="INSIDE" width="485.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Label layoutX="200.0" layoutY="14.0" prefHeight="36.0" prefWidth="103.0" text="Alterar morada" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="51.0" prefWidth="158.0" text="Nova morada:" />
+      <Label layoutX="14.0" layoutY="111.0" prefHeight="21.0" prefWidth="176.0" text="Código postal:" />
+      <TextField fx:id="newRua" layoutX="14.0" layoutY="74.0" prefHeight="25.0" prefWidth="460.0" />
+      <Button fx:id="changeMoradaBtn" layoutX="219.0" layoutY="205.0" mnemonicParsing="false" text="Alterar" />
+      <Text fx:id="infoMessageMorada" fill="WHITE" layoutX="125.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="252.13671875">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="newCodPostal" layoutX="13.0" layoutY="132.0" prefHeight="25.0" prefWidth="140.0" />
+      <Label layoutX="173.0" layoutY="109.0" prefHeight="21.0" prefWidth="176.0" text="Localidade:" />
+      <TextField fx:id="newLocalidade" layoutX="173.0" layoutY="132.0" prefHeight="25.0" prefWidth="305.0" />
+   </AnchorPane>
+   <AnchorPane layoutX="810.0" layoutY="390.0" prefHeight="170.0" prefWidth="280.0">
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#8fb9aa" height="170.0" layoutX="-230.0" layoutY="15.0" stroke="#8fb9aa" strokeType="INSIDE" width="280.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Label layoutX="41.0" layoutY="13.0" prefHeight="36.0" prefWidth="192.0" text="Alterar numero de télemovel" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="50.0" prefWidth="158.0" text="Novo numero:" />
+      <TextField fx:id="newTel" layoutX="14.0" layoutY="71.0" prefHeight="25.0" prefWidth="252.0" />
+      <Button fx:id="changeTelBtn" layoutX="105.0" layoutY="122.0" mnemonicParsing="false" text="Alterar" AnchorPane.bottomAnchor="15.0" />
+      <Text fx:id="infoMessageTel" fill="WHITE" layoutX="14.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="252.13671875">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+   </AnchorPane>
+</AnchorPane>

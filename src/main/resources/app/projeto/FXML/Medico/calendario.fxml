@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.calendarfx.view.CalendarView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1017.0"
+            prefWidth="1620.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+    <CalendarView layoutX="22.0" layoutY="21.0" prefHeight="1017.0" prefWidth="1620.0" AnchorPane.leftAnchor="0.0"
+                  AnchorPane.topAnchor="0.0"/>
+</AnchorPane>
