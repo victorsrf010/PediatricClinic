@@ -1,14 +1,17 @@
 package app.projeto;
 
-import app.projeto.Controllers.Admin.adminController;
+import app.projeto.Controllers.Admin.AdminController;
 import app.projeto.Controllers.Funcionario.FuncionarioController;
-import app.projeto.Controllers.Medico.medicoController;
+import app.projeto.Controllers.Medico.MedicoController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+import java.util.Objects;
 
 public class ViewFactory {
 
@@ -122,6 +125,35 @@ public class ViewFactory {
         return pacientesView;
     }
 
+    public void showReagendarWindow() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/Funcionario/PopUp/reagendarConsulta.fxml"));
+        Scene scene = null;
+        try {
+            scene = new Scene(loader.load());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Reagendar");
+        stage.show();
+    }
+
+    public void showNovaConsultaWindow() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/Funcionario/PopUp/novaConsulta.fxml"));
+        Scene scene = null;
+        try {
+            scene = new Scene(loader.load());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("Images/green_logo.png"))));
+        stage.setTitle("Nova consulta");
+        stage.show();
+    }
+
 
 
     // ** ** Medico ** **
@@ -150,14 +182,19 @@ public class ViewFactory {
             e.printStackTrace();
         }
         Stage stage = new Stage();
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("Images/green_logo.png"))));
         stage.setScene(scene);
         stage.setTitle("TinyHearts");
         stage.show();
     }
 
+
+
+
+
     public void showAdminWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/Admin/admin.fxml"));
-        adminController adminController = new adminController();
+        AdminController adminController = new AdminController();
         loader.setController(adminController);
         createStage(loader);
     }
@@ -171,11 +208,10 @@ public class ViewFactory {
 
     public void showMedicoWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/Medico/medico.fxml"));
-        medicoController medicoController = new medicoController();
+        MedicoController medicoController = new MedicoController();
         loader.setController(medicoController);
         createStage(loader);
     }
-
 
 
     private void createStage(FXMLLoader loader) {
@@ -187,6 +223,7 @@ public class ViewFactory {
         }
         Stage stage = new Stage();
         stage.setScene(scene);
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("Images/green_logo.png"))));
         stage.setTitle("TinyHearts");
         stage.setMaximized(true);
         stage.show();

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="1017.0" prefWidth="1620.0" style="-fx-background-color: d9d9d9;" stylesheets="@../../Styles/perfil.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.projeto.Controllers.Funcionario.PacientesController">
+<AnchorPane prefHeight="1017.0" prefWidth="1620.0" style="-fx-background-color: d9d9d9;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.projeto.Controllers.Funcionario.PacientesController">
 
     <TableView fx:id="utente" layoutX="60.0" layoutY="102.0" prefHeight="512.0" prefWidth="1500.0" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="102.0">
         <columns>
@@ -49,27 +50,37 @@
            </font>
         </Label>
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="207.0" layoutY="26.0" stroke="WHITE" strokeType="INSIDE" width="580.0" />
-        <Text fx:id="nomeInfo" fill="#797878" layoutX="13.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="550.13671875">
+        <Text fx:id="nomeInfo" fill="#797878" layoutX="13.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="550.13671875">
            <font>
                <Font size="30.0" />
            </font>
         </Text>
         <Label layoutX="14.0" layoutY="35.0" prefWidth="158.0" text="Nome:" />
-        <Text fx:id="sexoInfo" fill="#797878" layoutX="14.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="252.13671875">
+        <Text fx:id="sexoInfo" fill="#797878" layoutX="14.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="252.13671875">
            <font>
                <Font size="30.0" />
            </font>
         </Text>
         <Label layoutX="14.0" layoutY="92.0" prefWidth="158.0" text="Sexo:" />
-        <Text fx:id="idadeInfo" fill="#797878" layoutX="14.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="252.13671875">
+        <Text fx:id="idadeInfo" fill="#797878" layoutX="14.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="252.13671875">
            <font>
                <Font size="30.0" />
            </font>
         </Text>
         <Label layoutX="14.0" layoutY="149.0" prefWidth="158.0" text="Idade:" />
       <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="85.0" layoutY="211.0" stroke="WHITE" strokeType="INSIDE" width="580.0" />
+      <Text fx:id="knownDiseasesText" fill="#797878" layoutX="13.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="550.13671875">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Label layoutX="14.0" layoutY="211.0" prefWidth="158.0" text="Doenças conhecidas:" />
     </AnchorPane>
    <Button fx:id="agendarConsultaBtn" layoutX="1286.0" layoutY="640.0" mnemonicParsing="false" prefHeight="140.0" prefWidth="280.0" style="-fx-background-radius: 20;" styleClass="button1" text="Agendar Consulta" AnchorPane.leftAnchor="1281.0" />
    <Button fx:id="historicoBtn" layoutX="1281.0" layoutY="796.0" mnemonicParsing="false" prefHeight="140.0" prefWidth="280.0" style="-fx-background-radius: 20;" text="Histórico consultas" />
+   <stylesheets>
+      <URL value="@../../Styles/perfil.css" />
+      <URL value="@../../Styles/Funcionario/dashboard.css" />
+   </stylesheets>
 
 </AnchorPane>

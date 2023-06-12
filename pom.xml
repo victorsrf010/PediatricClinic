@@ -51,8 +51,12 @@
       <artifactId>jakarta.persistence-api</artifactId>
       <version>3.1.0</version>
     </dependency>
+    <dependency>
+      <groupId>com.calendarfx</groupId>
+      <artifactId>view</artifactId>
+      <version>11.12.5</version>
+    </dependency>
   </dependencies>
-
   <build>
         <plugins>
             <plugin>
@@ -80,7 +84,9 @@
               <noManPages>true</noManPages>
               <stripDebug>true</stripDebug>
               <noHeaderFiles>true</noHeaderFiles>
+              <modulepathElements>${project.compileClasspathElements}</modulepathElements>
             </configuration>
+
           </execution>
         </executions>
       </plugin>

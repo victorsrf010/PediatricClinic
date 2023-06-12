@@ -152,4 +152,22 @@ public class FuncionarioEntity {
     public int hashCode() {
         return Objects.hash(id, tipoId, nif, nome, email, numeroTelemovel, password, rua, localidade, codigoPostal, estado);
     }
+
+    @Override
+    public String toString() {
+        return "FuncionarioEntity{" +
+                "id=" + id +
+                ", tipoId=" + tipoId +
+                ", nif='" + nif + '\'' +
+                ", nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", numeroTelemovel='" + numeroTelemovel + '\'' +
+                ", password='" + password + '\'' +
+                ", rua='" + rua + '\'' +
+                ", localidade='" + localidade + '\'' +
+                ", codigoPostal='" + codigoPostal + '\'' +
+                ", estado=" + estado +
+                '}';
+    }
+
 }

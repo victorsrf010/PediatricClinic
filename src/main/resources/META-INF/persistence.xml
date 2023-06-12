@@ -15,6 +15,7 @@
         <class>app.projeto.Entities.TipoPagamentoEntity</class>
         <class>app.projeto.Entities.UtenteEntity</class>
         <class>app.projeto.Entities.UtenteDoencasEntity</class>
+        <class>app.projeto.Entities.InfoEntity</class>
 
 
         <properties>

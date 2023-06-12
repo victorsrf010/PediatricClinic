@@ -59,15 +59,27 @@ public class PagamentoEntity {
     }
 
     @Basic
-    @Column(name = "IDConsulta")
-    private Integer idConsulta;
+    @Column(name = "Estado")
+    private String estado;
 
-    public Integer getIdConsulta() {
-        return idConsulta;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setIdConsulta(Integer idConsulta) {
-        this.idConsulta = idConsulta;
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="IDConsulta")
+    private ConsultaEntity consulta;
+
+    public ConsultaEntity getConsulta() {
+        return consulta;
+    }
+
+    public void setConsulta(ConsultaEntity consulta) {
+        this.consulta = consulta;
     }
 
     @Override
@@ -75,11 +87,11 @@ public class PagamentoEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PagamentoEntity that = (PagamentoEntity) o;
-        return id == that.id && Objects.equals(valor, that.valor) && Objects.equals(tipoId, that.tipoId) && Objects.equals(dataPagamento, that.dataPagamento) && Objects.equals(idConsulta, that.idConsulta);
+        return id == that.id && Objects.equals(valor, that.valor) && Objects.equals(tipoId, that.tipoId) && Objects.equals(dataPagamento, that.dataPagamento) && Objects.equals(consulta.getId(), that.consulta.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, valor, tipoId, dataPagamento, idConsulta);
+        return Objects.hash(id, valor, tipoId, dataPagamento, consulta.getId());
     }
 }

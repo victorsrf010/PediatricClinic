@@ -87,7 +87,7 @@
    </Text>
    <AnchorPane layoutX="1221.0" layoutY="66.0" prefHeight="855.0" prefWidth="330.0">
       <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="855.0" layoutX="14.0" layoutY="14.0" stroke="WHITE" strokeType="INSIDE" width="330.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <ListView fx:id="medicosPresentes" layoutX="15.0" prefHeight="805.0" prefWidth="280.0" style="-fx-background-radius: 25; -fx-background-color: #d9d9d9;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0" />
+      <ListView fx:id="medicosPresentes" layoutX="15.0" prefHeight="805.0" prefWidth="280.0" style="-fx-background-radius: 25; -fx-background-color: #d9d9d9; -fx-border-radius: 25;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0" />
    </AnchorPane>
    <Button fx:id="cancelarBtn" layoutX="890.0" layoutY="254.0" mnemonicParsing="false" style="-fx-background-color: ff9090;" text="Cancelar" />
    <Button fx:id="reagendarBtn" layoutX="978.0" layoutY="254.0" mnemonicParsing="false" text="Reagendar" />

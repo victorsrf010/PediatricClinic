@@ -3,16 +3,28 @@ package app.projeto.Entities;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.sql.Time;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
+@NamedStoredProcedureQuery(
+        name = "spUtente3Consultas",
+        procedureName = "spUtente3Consultas",
+        parameters = {
+                @StoredProcedureParameter(mode = ParameterMode.IN, type = Integer.class, name = "UtenteID")
+        }
+)
+
 @NamedQuery(
         name = "ListaConsultas",
-        query = "SELECT c FROM ConsultaEntity c WHERE c.dataConsulta BETWEEN :startOfDay AND :endOfDay"
+        query = "SELECT c FROM ConsultaEntity c JOIN FETCH c.utente JOIN FETCH c.funcionario WHERE c.dataConsulta >= :startOfDay AND c.dataConsulta < :endOfDay"
 )
+
+
 @NamedQuery(
         name = "ListaConsultasUtente",
-        query = "SELECT c FROM ConsultaEntity c WHERE c.utente = :utente ORDER BY c.data"
+        query = "SELECT c FROM ConsultaEntity c WHERE c.utente.id = :utenteId ORDER BY c.dataConsulta"
 )
 @jakarta.persistence.Table(name = "Consulta", schema = "dbo", catalog = "tinyhearts")
 public class ConsultaEntity {
@@ -67,13 +79,13 @@ public class ConsultaEntity {
 
     @Basic
     @Column(name = "HoraConsulta")
-    private Object horaConsulta;
+    private Time horaConsulta;
 
-    public Object getHoraConsulta() {
+    public Time getHoraConsulta() {
         return horaConsulta;
     }
 
-    public void setHoraConsulta(Object horaConsulta) {
+    public void setHoraConsulta(Time horaConsulta) {
         this.horaConsulta = horaConsulta;
     }
 
@@ -103,7 +115,7 @@ public class ConsultaEntity {
 
     @Basic
     @Column(name = "Estado")
-    private String estado;
+    public String estado;
 
     public String getEstado() {
         return estado;
@@ -112,6 +124,18 @@ public class ConsultaEntity {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    @OneToMany(mappedBy="consulta")
+    private List<PagamentoEntity> pagamentos;
+
+    public List<PagamentoEntity> getPagamentos() {
+        return pagamentos;
+    }
+
+    public void setPagamentos(List<PagamentoEntity> pagamentos) {
+        this.pagamentos = pagamentos;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -125,4 +149,19 @@ public class ConsultaEntity {
     public int hashCode() {
         return Objects.hash(id, funcionario.getId(), utente.getId(), dataConsulta, horaConsulta, idTipo, idDiagnostico, estado);
     }
+
+    @Override
+    public String toString() {
+        return "ConsultaEntity{" +
+                "id=" + id +
+                ", funcionario=" + funcionario +
+                ", utente=" + utente +
+                ", dataConsulta=" + dataConsulta +
+                ", horaConsulta=" + horaConsulta +
+                ", idTipo=" + idTipo +
+                ", idDiagnostico=" + idDiagnostico +
+                ", estado='" + estado + '\'' +
+                '}';
+    }
+
 }
