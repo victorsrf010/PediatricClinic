@@ -6,4 +6,5 @@ import com.calendarfx.view.CalendarView;
 
 public class ReagendarConsultaController {
 
-    }
+    public CalendarView calendar;
+}

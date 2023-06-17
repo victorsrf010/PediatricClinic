@@ -4,6 +4,7 @@ import app.projeto.Entities.ConsultaEntity;
 import app.projeto.Entities.DoencasConhecidasEntity;
 import app.projeto.Entities.PagamentoEntity;
 import app.projeto.Entities.UtenteEntity;
+import app.projeto.Model;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -48,9 +49,12 @@ public class PacientesController implements Initializable {
     public Button agendarConsultaBtn;
     public Button historicoBtn;
     public Text knownDiseasesText;
+    public Button pagarBtn;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        refreshTable();
 
         nomeClm.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
         nifClm.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNif()));
@@ -75,21 +79,18 @@ public class PacientesController implements Initializable {
             if (!pagamentos.isEmpty()) {
                 estado = pagamentos.get(0).getEstado();
             }
-            return new SimpleStringProperty(estado);
+            return new SimpleObjectProperty<>(estado);
         });
 
-        // Add a listener to the pesquisarTxtfd TextField
         pesquisarTxtfd.textProperty().addListener((observable, oldValue, newValue) -> {
-            String searchTerm = newValue.trim(); // Get the trimmed search term
+            String searchTerm = newValue.trim();
 
-            // Clear the selection and details when search term is empty
             if (searchTerm.isEmpty()) {
                 utente.getSelectionModel().clearSelection();
                 clearUtenteDetails();
                 return;
             }
 
-            // Filter the utente table based on the search term
             utente.getItems().clear();
             utente.getItems().addAll(filterUtentes(searchTerm));
         });
@@ -100,11 +101,18 @@ public class PacientesController implements Initializable {
             }
         });
 
-        loadUtenteData();
+        adicionarPacBtn.setOnAction(event -> Model.getInstance().getViewFactory().showAdicionarPaciente());
+        editarBtn.setOnAction(event -> Model.getInstance().getViewFactory().showEditarPaciente(utente.getSelectionModel().getSelectedItem()));
+    }
+
+    public void refreshTable() {
+        utente.getItems().clear();
+        
+        List<UtenteEntity> allUtentes = loadUtenteData();
+        utente.getItems().addAll(allUtentes);
     }
 
     private List<UtenteEntity> filterUtentes(String searchTerm) {
-        // Retrieve the UtenteEntity data from the database based on the search term
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("tinyhearts");
         EntityManager em = emf.createEntityManager();
 
@@ -117,7 +125,6 @@ public class PacientesController implements Initializable {
 
             return utentes;
         } catch (Exception e) {
-            // Handle exceptions appropriately
             e.printStackTrace();
             em.getTransaction().rollback();
             return Collections.emptyList();
@@ -127,8 +134,7 @@ public class PacientesController implements Initializable {
         }
     }
 
-    private void loadUtenteData() {
-        // Retrieve the UtenteEntity data from the database
+    private List<UtenteEntity> loadUtenteData() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("tinyhearts");
         EntityManager em = emf.createEntityManager();
         try {
@@ -137,17 +143,17 @@ public class PacientesController implements Initializable {
                     .getResultList();
             em.getTransaction().commit();
 
-            // Populate the table view with the retrieved data
-            utente.getItems().addAll(utentes);
+            return utentes;
         } catch (Exception e) {
-            // Handle exceptions appropriately
             e.printStackTrace();
             em.getTransaction().rollback();
+            return Collections.emptyList();
         } finally {
             em.close();
             emf.close();
         }
     }
+
 
     private void updateUtenteDetails(UtenteEntity utente) {
         nomeInfo.setText(utente.getNome());
@@ -161,7 +167,6 @@ public class PacientesController implements Initializable {
 
         loadConsultas(utente);
 
-        // Retrieve the known diseases of the selected UtenteEntity
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("tinyhearts");
         EntityManager em = emf.createEntityManager();
 
@@ -188,7 +193,6 @@ public class PacientesController implements Initializable {
 
             em.getTransaction().commit();
         } catch (Exception e) {
-            // Handle exceptions appropriately
             e.printStackTrace();
             em.getTransaction().rollback();
         } finally {
@@ -204,7 +208,6 @@ public class PacientesController implements Initializable {
         nomeInfo.setText("");
         sexoInfo.setText("");
         idadeInfo.setText("");
-        // Clear other Text fields if needed
     }
 
     private void loadConsultas(UtenteEntity utente) {
@@ -223,12 +226,10 @@ public class PacientesController implements Initializable {
 
             ObservableList<ConsultaEntity> consultasList = FXCollections.observableArrayList(consultas);
 
-            // Set the items of the TableView to the consultasList
             ultimasConsultas.setItems(consultasList);
 
             em.getTransaction().commit();
         } catch (Exception e) {
-            // Handle exceptions appropriately
             e.printStackTrace();
             em.getTransaction().rollback();
         } finally {
@@ -236,6 +237,5 @@ public class PacientesController implements Initializable {
             emf.close();
         }
     }
-
 
 }

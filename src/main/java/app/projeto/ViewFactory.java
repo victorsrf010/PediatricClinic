@@ -1,8 +1,12 @@
 package app.projeto;
 
 import app.projeto.Controllers.Admin.AdminController;
+import app.projeto.Controllers.Funcionario.ConsultasController;
 import app.projeto.Controllers.Funcionario.FuncionarioController;
+import app.projeto.Controllers.Funcionario.PacientesController;
+import app.projeto.Controllers.Funcionario.PopUp.EditarDadosPacienteController;
 import app.projeto.Controllers.Medico.MedicoController;
+import app.projeto.Entities.UtenteEntity;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
@@ -33,9 +37,37 @@ public class ViewFactory {
     private AnchorPane meusPacientesView;
     private AnchorPane calendarioView;
 
-
     private AnchorPane perfilView;
 
+
+    private ConsultasController consultasController;
+    private PacientesController pacientesController;
+
+    public ConsultasController getConsultasController() {
+        if (consultasController == null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/Funcionario/consultas.fxml"));
+                consultasView = loader.load();
+                consultasController = loader.getController();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return consultasController;
+    }
+
+    public PacientesController getPacientesController() {
+        if (pacientesController == null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/Funcionario/pacientes.fxml"));
+                pacientesView = loader.load();
+                pacientesController = loader.getController();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return pacientesController;
+    }
 
     public ViewFactory() {
         this.adminSelectedMenuItem = new SimpleStringProperty("");
@@ -126,33 +158,36 @@ public class ViewFactory {
     }
 
     public void showReagendarWindow() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/Funcionario/PopUp/reagendarConsulta.fxml"));
-        Scene scene = null;
-        try {
-            scene = new Scene(loader.load());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setTitle("Reagendar");
-        stage.show();
+        showPopUpWindow("FXML/Funcionario/PopUp/reagendarConsulta.fxml", "Reagendar");
     }
 
     public void showNovaConsultaWindow() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/Funcionario/PopUp/novaConsulta.fxml"));
+        showPopUpWindow("FXML/Funcionario/PopUp/novaConsulta.fxml", "Nova consulta");
+    }
+
+    public void showAdicionarPaciente() {
+        showPopUpWindow("FXML/Funcionario/PopUp/adicionarPaciente.fxml", "Adicionar paciente");
+    }
+
+    public void showEditarPaciente(UtenteEntity utente) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/Funcionario/PopUp/editarDadosPaciente.fxml"));
         Scene scene = null;
         try {
             scene = new Scene(loader.load());
         } catch (Exception e) {
             e.printStackTrace();
         }
+        EditarDadosPacienteController controller = loader.getController();
+        controller.initializeData(utente);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("Images/green_logo.png"))));
-        stage.setTitle("Nova consulta");
+        stage.setTitle("Editar paciente");
         stage.show();
     }
+
+
+
 
 
 
@@ -187,10 +222,6 @@ public class ViewFactory {
         stage.setTitle("TinyHearts");
         stage.show();
     }
-
-
-
-
 
     public void showAdminWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/Admin/admin.fxml"));
@@ -228,6 +259,22 @@ public class ViewFactory {
         stage.setMaximized(true);
         stage.show();
     }
+
+    public void showPopUpWindow(String fxmlPath, String title) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+        Scene scene = null;
+        try {
+            scene = new Scene(loader.load());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("Images/green_logo.png"))));
+        stage.setTitle(title);
+        stage.show();
+    }
+
 
     public void closeStage(Stage stage) {
         stage.close();

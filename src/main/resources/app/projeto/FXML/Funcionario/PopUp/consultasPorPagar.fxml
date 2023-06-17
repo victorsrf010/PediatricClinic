@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane prefHeight="780.0" prefWidth="900.0" stylesheets="@../../../Styles/perfil.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.projeto.Controllers.Funcionario.PopUp.consultasPorPagarController">
+<AnchorPane prefHeight="780.0" prefWidth="900.0" stylesheets="@../../../Styles/perfil.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.projeto.Controllers.Funcionario.PopUp.ConsultasPorPagarController">
    <children>
       <Text fill="#5b5b5b" layoutX="293.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Consultas por pagar" textAlignment="CENTER" wrappingWidth="314.576171875">
          <font>

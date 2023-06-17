@@ -125,7 +125,7 @@ public class ConsultaEntity {
         this.estado = estado;
     }
 
-    @OneToMany(mappedBy="consulta")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy="consulta")
     private List<PagamentoEntity> pagamentos;
 
     public List<PagamentoEntity> getPagamentos() {

@@ -181,6 +181,7 @@ public class PerfilController implements Initializable {
 
         FuncionarioEntity currentUser = AuthenticationService.getCurrentUser();
         currentUser.setRua(rua);
+        currentUser.setLocalidade(localidadeK);
         currentUser.setCodigoPostal(codPostalK);
 
         EntityManagerFactory factory = JPAUtil.getEntityManagerFactory();
@@ -228,9 +229,6 @@ public class PerfilController implements Initializable {
             entityManager.close();
         }
     }
-
-
-
 
     public void checkCargo() {
         if (user.getTipoId() == 3) {

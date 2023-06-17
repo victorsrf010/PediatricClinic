@@ -1,6 +1,7 @@
 package app.projeto.Controllers.Funcionario;
 
 import app.projeto.Entities.ConsultaEntity;
+import app.projeto.Entities.PagamentoEntity;
 import app.projeto.Model;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -42,6 +43,8 @@ public class ConsultasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        refreshTable();
+
         idClm.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getId()).asObject());
 
         estadoClm.setCellValueFactory(cellData -> {
@@ -69,20 +72,34 @@ public class ConsultasController implements Initializable {
             return new SimpleObjectProperty<>(hora);
         });
 
+        pagamentoClm.setCellValueFactory(cellData -> {
+            String estadoPag = "";
+            List<PagamentoEntity> pagamentos = cellData.getValue().getPagamentos();
+            if (!pagamentos.isEmpty()) {
+                estadoPag = pagamentos.get(0).getEstado();
+            }
+            return new SimpleObjectProperty<>(estadoPag);
+        });
 
-
-        // Load all ConsultaEntity records and populate the table view
         List<ConsultaEntity> allConsultas = loadAllConsultas();
+
         consultas.getItems().addAll(allConsultas);
 
-        // Add listener to the pesquisarTxtfd for search functionality
         pesquisarTxtfd.textProperty().addListener((observable, oldValue, newValue) -> searchConsultas(newValue));
 
         agendarConsultaBtn.setOnAction(event ->{
             Model.getInstance().getViewFactory().showNovaConsultaWindow();
         });
 
+        refreshTable();
 
+    }
+
+    public void refreshTable() {
+        consultas.getItems().clear();
+
+        List<ConsultaEntity> allConsultas = loadAllConsultas();
+        consultas.getItems().addAll(allConsultas);
     }
 
     private List<ConsultaEntity> loadAllConsultas() {
@@ -97,7 +114,6 @@ public class ConsultasController implements Initializable {
 
             return consultas;
         } catch (Exception e) {
-            // Handle exceptions appropriately
             e.printStackTrace();
             em.getTransaction().rollback();
             return Collections.emptyList();
@@ -106,11 +122,10 @@ public class ConsultasController implements Initializable {
             emf.close();
         }
     }
+
     private void searchConsultas(String keyword) {
-        // Clear the current table data
         consultas.getItems().clear();
 
-        // Load filtered ConsultaEntity records based on the keyword
         List<ConsultaEntity> filteredConsultas = loadFilteredConsultas(keyword);
         consultas.getItems().addAll(filteredConsultas);
     }
@@ -122,7 +137,6 @@ public class ConsultasController implements Initializable {
         try {
             em.getTransaction().begin();
 
-            // Create a named query to retrieve ConsultaEntity records filtered by Utente or Funcionario name
             TypedQuery<ConsultaEntity> query = em.createQuery(
                     "SELECT c FROM ConsultaEntity c " +
                             "WHERE LOWER(c.utente.nome) LIKE LOWER(:keyword) " +
@@ -136,7 +150,6 @@ public class ConsultasController implements Initializable {
 
             return consultas;
         } catch (Exception e) {
-            // Handle exceptions appropriately
             e.printStackTrace();
             em.getTransaction().rollback();
             return Collections.emptyList();

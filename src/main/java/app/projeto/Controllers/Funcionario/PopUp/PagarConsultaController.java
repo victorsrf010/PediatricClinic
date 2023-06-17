@@ -1,4 +1,4 @@
 package app.projeto.Controllers.Funcionario.PopUp;
 
-public class dadosConsultaController {
+public class PagarConsultaController {
 }

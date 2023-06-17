@@ -82,10 +82,13 @@ public class MenuController implements Initializable {
 
     private void onPacientes() {
         Model.getInstance().getViewFactory().getFuncionarioSelectedMenuItem().set("Pacientes");
+        Model.getInstance().getViewFactory().getPacientesController().refreshTable();
     }
 
     private void onConsultas() {
         Model.getInstance().getViewFactory().getFuncionarioSelectedMenuItem().set("Consultas");
+        Model.getInstance().getViewFactory().getConsultasController().refreshTable();
+
     }
 
     private void onPerfil() {

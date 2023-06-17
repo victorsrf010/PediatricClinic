@@ -33,7 +33,7 @@
                <Font size="14.0" />
            </font>
         </Label>
-        <TableView fx:id="ultimasConsultas" layoutY="26.0" prefHeight="270.0" prefWidth="580.0" style="-fx-background-radius: 20;">
+        <TableView fx:id="ultimasConsultas" layoutY="26.0" prefHeight="230.0" prefWidth="580.0" style="-fx-background-radius: 20;">
             <columns>
                 <TableColumn fx:id="dtPagamentoClm" prefWidth="99.0" text="Data" />
                 <TableColumn fx:id="drClm" prefWidth="215.0" text="Dr." />
@@ -41,6 +41,7 @@
                 <TableColumn fx:id="estadoPagClm" prefWidth="185.0" text="Estado pagamento" />
             </columns>
         </TableView>
+      <Button fx:id="pagarBtn" layoutX="217.0" layoutY="260.0" mnemonicParsing="false" text="Efetuar pagamento" />
     </AnchorPane>
     <AnchorPane layoutX="681.0" layoutY="640.0" prefHeight="296.0" prefWidth="580.0" AnchorPane.leftAnchor="671.0">
         <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#8fb9aa" height="296.0" layoutX="48.0" layoutY="24.0" stroke="#8fb9aa" strokeType="INSIDE" width="580.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
