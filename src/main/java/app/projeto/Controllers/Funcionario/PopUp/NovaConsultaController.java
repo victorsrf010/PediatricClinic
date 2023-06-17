@@ -71,36 +71,43 @@ public class NovaConsultaController {
             currentEntry.changeStartTime(zonedDateTime.toLocalTime());
             currentEntry.changeEndTime(zonedDateTime.toLocalTime().plusMinutes(30)); // Set default duration to 1 hour.
 
+            // Set the title to the name of the currently selected UtenteEntity
+            UtenteEntity selectedUtente = utenteChoicebox.getValue();
+            if (selectedUtente != null) {
+                currentEntry.setTitle(selectedUtente.getNome());
+            } else {
+                // Set a default title if no UtenteEntity is selected
+                currentEntry.setTitle("Nova consulta");
+            }
+
             return currentEntry;
         });
 
-
         populateDrChoicebox();
         populateUtenteChoicebox();
-
 
         guardarBtn.setOnAction(event -> handleGuardarBtnClick());
     }
 
     private void updateCalendarEntries(FuncionarioEntity funcionario) {
-
         calendar.clear();
-
         List<ConsultaEntity> consultas = loadConsultasForFuncionario(funcionario);
         for (ConsultaEntity consulta : consultas) {
             Entry<ConsultaEntity> entry = new Entry<>();
             entry.changeStartDate(consulta.getDataConsulta().toLocalDate());
             entry.changeStartTime(consulta.getHoraConsulta().toLocalTime());
-
             entry.changeEndTime(consulta.getHoraConsulta().toLocalTime().plusMinutes(30));
+
+            // Set the title to the name of the Utente
+            entry.setTitle(consulta.getUtente().getNome());
 
             consulta.setFuncionario(funcionario);
 
             entry.setUserObject(consulta);
             calendar.addEntry(entry);
         }
-
     }
+
 
     private List<ConsultaEntity> loadConsultasForFuncionario(FuncionarioEntity funcionario) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("tinyhearts");
@@ -134,7 +141,7 @@ public class NovaConsultaController {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("tinyhearts");
         EntityManager em = emf.createEntityManager();
         try {
-            TypedQuery<UtenteEntity> query = em.createQuery("SELECT nome FROM UtenteEntity u", UtenteEntity.class);
+            TypedQuery<UtenteEntity> query = em.createQuery("SELECT u FROM UtenteEntity u", UtenteEntity.class);
             List<UtenteEntity> utentes = query.getResultList();
             utenteChoicebox.getItems().addAll(utentes);
         } finally {
@@ -147,7 +154,7 @@ public class NovaConsultaController {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("tinyhearts");
         EntityManager em = emf.createEntityManager();
         try {
-            TypedQuery<FuncionarioEntity> query = em.createQuery("SELECT nome FROM FuncionarioEntity f", FuncionarioEntity.class);
+            TypedQuery<FuncionarioEntity> query = em.createQuery("SELECT f FROM FuncionarioEntity f WHERE f.tipoId=1", FuncionarioEntity.class);
             List<FuncionarioEntity> funcionarios = query.getResultList();
             drChoicebox.getItems().addAll(funcionarios);
         } finally {
@@ -159,7 +166,6 @@ public class NovaConsultaController {
     private void handleGuardarBtnClick() {
         if (currentEntry != null) {
             LocalDateTime startDateTime = currentEntry.getStartAsLocalDateTime();
-            LocalDateTime endDateTime = currentEntry.getEndAsLocalDateTime();
 
             ConsultaEntity consulta = new ConsultaEntity();
             consulta.setDataConsulta(java.sql.Date.valueOf(startDateTime.toLocalDate()));
@@ -167,14 +173,26 @@ public class NovaConsultaController {
             consulta.setIdTipo(1);
             consulta.setEstado("Agendada");
             consulta.setIdDiagnostico(null);
-            consulta.setUtente(utenteChoicebox.getValue());
-            consulta.setFuncionario(drChoicebox.getValue());
+
+            UtenteEntity selectedUtente = utenteChoicebox.getValue();
+            if (selectedUtente != null) {
+                consulta.setUtente(selectedUtente);
+            } else {
+                System.out.println("Sem utente");
+            }
+
+            FuncionarioEntity selectedFuncionario = drChoicebox.getValue();
+            if (selectedFuncionario != null) {
+                consulta.setFuncionario(selectedFuncionario);
+            } else {
+                System.out.println("Sem funcionario");
+            }
 
             EntityManagerFactory emf = Persistence.createEntityManagerFactory("tinyhearts");
             EntityManager em = emf.createEntityManager();
             try {
                 em.getTransaction().begin();
-                em.persist(consulta); // Save the ConsultaEntity to the database
+                em.persist(consulta);
                 em.getTransaction().commit();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -183,6 +201,18 @@ public class NovaConsultaController {
                 em.close();
                 emf.close();
             }
+
+            Stage stage = (Stage) drChoicebox.getScene().getWindow();
+            Model.getInstance().getViewFactory().closeStage(stage);
+
+            Model.getInstance().getViewFactory().getConsultasController().refreshTable();
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sucesso");
+            alert.setHeaderText(null);
+            alert.setContentText("Consulta adicionado com sucesso");
+
+            alert.showAndWait();
         }
     }
 }

@@ -120,16 +120,7 @@ public class UtenteEntity {
 
     @Override
     public String toString() {
-        return "UtenteEntity{" +
-                "id=" + id +
-                ", nif='" + nif + '\'' +
-                ", nome='" + nome + '\'' +
-                ", email='" + email + '\'' +
-                ", dataNascimento=" + dataNascimento +
-                ", nomeRepresentanteLegal='" + nomeRepresentanteLegal + '\'' +
-                ", sexo='" + sexo + '\'' +
-                ", contactoRepresentanteLegal='" + contactoRepresentanteLegal + '\'' +
-                '}';
+        return nome;
     }
 
 }

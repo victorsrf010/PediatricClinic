@@ -56,8 +56,6 @@ public class AdicionarPacienteController implements Initializable {
 
             em.close();
 
-            Model.getInstance().getViewFactory().getPacientesController().refreshTable();
-
             Stage stage = (Stage) adicionarBtn.getScene().getWindow();
             Model.getInstance().getViewFactory().closeStage(stage);
 
