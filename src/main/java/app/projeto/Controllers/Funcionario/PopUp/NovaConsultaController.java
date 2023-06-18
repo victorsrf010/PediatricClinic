@@ -17,7 +17,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.ZonedDateTime;
 import java.util.Collections;
 import java.util.List;
@@ -88,9 +90,16 @@ public class NovaConsultaController {
         List<ConsultaEntity> consultas = loadConsultasForFuncionario(funcionario);
         for (ConsultaEntity consulta : consultas) {
             Entry<ConsultaEntity> entry = new Entry<>();
-            entry.changeStartDate(consulta.getDataConsulta().toLocalDate());
-            entry.changeStartTime(consulta.getHoraConsulta().toLocalTime());
-            entry.changeEndTime(consulta.getHoraConsulta().toLocalTime().plusMinutes(30));
+
+            LocalDate startDate = consulta.getDataConsulta().toLocalDate();
+            LocalTime startTime = consulta.getHoraConsulta().toLocalTime();
+            LocalDateTime startDateTime = LocalDateTime.of(startDate, startTime);
+            LocalDateTime endDateTime = startDateTime.plusMinutes(30);  // Or whatever your end time is
+
+            entry.changeStartDate(startDateTime.toLocalDate());
+            entry.changeStartTime(startDateTime.toLocalTime());
+            entry.changeEndDate(endDateTime.toLocalDate());
+            entry.changeEndTime(endDateTime.toLocalTime());
 
             // Set the title to the name of the Utente
             entry.setTitle(consulta.getUtente().getNome());
@@ -101,7 +110,6 @@ public class NovaConsultaController {
             calendar.addEntry(entry);
         }
     }
-
 
     private List<ConsultaEntity> loadConsultasForFuncionario(FuncionarioEntity funcionario) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("tinyhearts");

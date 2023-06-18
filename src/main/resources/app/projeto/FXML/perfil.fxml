@@ -50,13 +50,13 @@
             </font>
          </Text>
          <Label layoutX="27.0" layoutY="243.0" prefWidth="158.0" text="NIF:" />
-         <Text fx:id="morada" fill="WHITE" layoutX="27.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="252.13671875">
+         <Text fx:id="morada" fill="WHITE" layoutX="23.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="654.13671875">
             <font>
                <Font size="30.0" />
             </font>
          </Text>
          <Label layoutX="27.0" layoutY="300.0" prefWidth="158.0" text="Morada:" />
-         <Text fx:id="localidade" fill="WHITE" layoutX="27.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="252.13671875">
+         <Text fx:id="localidade" fill="WHITE" layoutX="24.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="511.13671875">
             <font>
                <Font size="30.0" />
             </font>

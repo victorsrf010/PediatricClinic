@@ -1,4 +1,4 @@
-package app.projeto.Controllers.Funcionario;
+package app.projeto.Controllers.Admin;
 
 import app.projeto.AuthenticationService;
 import app.projeto.Model;
@@ -15,23 +15,21 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.net.URL;
-import java.sql.SQLException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MenuController implements Initializable {
-    public Button inicioButton;
+    public Button funcionariosButton;
     public Button pacientesButton;
-    public Button perfilButton;
     public Button consultasButton;
+    public Button perfilButton;
     public Button desconectarButton;
     public Text time;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         addListeneres();
 
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
@@ -71,36 +69,29 @@ public class MenuController implements Initializable {
 
 
     private void addListeneres() {
-        inicioButton.setOnAction(actionEvent -> {
-            try {
-                onDashboard();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        });
+        funcionariosButton.setOnAction(actionEvent -> onFuncionarios());
         pacientesButton.setOnAction(actionEvent -> onPacientes());
         consultasButton.setOnAction(actionEvent -> onConsultas());
         perfilButton.setOnAction(actionEvent -> onPerfil());
     }
 
-    private void onDashboard() throws SQLException {
-        Model.getInstance().getViewFactory().getFuncionarioSelectedMenuItem().set("Dashboard");
-        Model.getInstance().getViewFactory().getDashboardController().refreshTable();
+    private void onFuncionarios() {
+        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set("Funcionarios");
     }
 
     private void onPacientes() {
-        Model.getInstance().getViewFactory().getFuncionarioSelectedMenuItem().set("Pacientes");
+        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set("Pacientes");
         Model.getInstance().getViewFactory().getPacientesController().refreshTable();
     }
 
     private void onConsultas() {
-        Model.getInstance().getViewFactory().getFuncionarioSelectedMenuItem().set("Consultas");
+        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set("Consultas");
         Model.getInstance().getViewFactory().getConsultasController().refreshTable();
 
     }
 
     private void onPerfil() {
-        Model.getInstance().getViewFactory().getFuncionarioSelectedMenuItem().set("Perfil");
+        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set("Perfil");
     }
 
 }

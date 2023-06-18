@@ -2,7 +2,6 @@ package app.projeto.Controllers.Funcionario;
 
 import app.projeto.Entities.ConsultaEntity;
 import app.projeto.Entities.FuncionarioEntity;
-import app.projeto.Entities.InfoEntity;
 import app.projeto.JPAUtil;
 import app.projeto.Model;
 import jakarta.persistence.EntityManager;
@@ -15,10 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 import java.net.URL;
 import java.sql.Date;
@@ -73,7 +69,17 @@ public class DashboardController implements Initializable {
         }
     }
 
-    public void populateTable() throws SQLException {
+    public void refreshTable() throws SQLException {
+        proximasConsultas.getItems().clear();
+
+        List<ConsultaEntity> allConsultas = populateTable();
+        if (allConsultas != null) {
+            proximasConsultas.getItems().addAll(allConsultas);
+        }
+    }
+
+
+    public List<ConsultaEntity> populateTable() throws SQLException {
         EntityManagerFactory factory = JPAUtil.getEntityManagerFactory();
         EntityManager entityManager = factory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
@@ -91,7 +97,6 @@ public class DashboardController implements Initializable {
 
             List<ConsultaEntity> consultas = listaConsultas.getResultList();
 
-            // Filter the consultas based on idEstadoconsul
             List<ConsultaEntity> filteredConsultas = consultas.stream()
                     .filter(consulta -> Objects.equals(consulta.getEstado(), "Agendada"))
                     .collect(Collectors.toList());
@@ -111,6 +116,7 @@ public class DashboardController implements Initializable {
             }
             entityManager.close();
         }
+        return null;
     }
 
     public void updateMedicosDisponiveis() {
@@ -137,7 +143,6 @@ public class DashboardController implements Initializable {
             try {
                 transaction.begin();
 
-                // Retrieve the ConsultaEntity from the database using its ID
                 ConsultaEntity consultaEntity = entityManager.find(ConsultaEntity.class, selectedConsulta.getId());
 
                 // Check if the ConsultaEntity exists

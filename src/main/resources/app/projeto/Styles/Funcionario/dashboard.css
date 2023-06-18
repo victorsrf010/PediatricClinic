@@ -32,7 +32,6 @@
     -fx-background-radius: 25;
 }
 
-/* Removing contour around the whole TableView */
 .table-view {
     -fx-border-width: 0px;
     -fx-border-color: transparent;
@@ -40,12 +39,10 @@
     -fx-faint-focus-color: transparent;
 }
 
-/* Changing color of the selected item */
 .table-row-cell:selected {
     -fx-background-color: #8FB9AA;
 }
 
-/* Changing color of the selected item when it is focused */
 .table-row-cell:filled:selected:focused {
     -fx-background-color: #8FB9AA;
 }

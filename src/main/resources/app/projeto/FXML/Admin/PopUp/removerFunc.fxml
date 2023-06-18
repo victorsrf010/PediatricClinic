@@ -6,26 +6,24 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="230.0" prefWidth="455.0" style="-fx-background-color: ececec; -fx-background-radius: 20;" stylesheets="@../../../Styles/perfil.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.projeto.Controllers.Admin.PopUp.adicionarFuncController">
-   <children>
-      <Text fill="#5b5b5b" layoutX="70.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remover funcionário" textAlignment="CENTER" wrappingWidth="314.576171875">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <Label layoutX="24.0" layoutY="60.0" prefWidth="158.0" text="Nome:" />
-      <Label layoutX="24.0" layoutY="112.0" prefWidth="158.0" text="Cargo:" />
-      <Button fx:id="adicionarBtn" layoutX="97.0" layoutY="169.0" mnemonicParsing="false" prefWidth="100.0" styleClass="button1" text="Editar" AnchorPane.bottomAnchor="20.0" />
-      <Button fx:id="cancelarBtn" layoutX="252.0" layoutY="169.0" mnemonicParsing="false" prefWidth="100.0" text="Cancelar" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="103.0" />
-      <Text fx:id="nome" fill="#5b5b5b" layoutX="24.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="text" wrappingWidth="400.0">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fx:id="cargo" fill="#5b5b5b" layoutX="24.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="text" wrappingWidth="400.0">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-   </children>
+<AnchorPane prefHeight="230.0" prefWidth="455.0" style="-fx-background-color: ececec; -fx-background-radius: 20;" stylesheets="@../../../Styles/perfil.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.projeto.Controllers.Admin.PopUp.removerFuncController">
+   <Text fill="#5b5b5b" layoutX="70.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remover funcionário" textAlignment="CENTER" wrappingWidth="314.576171875">
+      <font>
+         <Font size="20.0" />
+      </font>
+   </Text>
+   <Label layoutX="24.0" layoutY="60.0" prefWidth="158.0" text="Nome:" />
+   <Label layoutX="24.0" layoutY="112.0" prefWidth="158.0" text="Cargo:" />
+   <Button fx:id="adicionarBtn" layoutX="97.0" layoutY="169.0" mnemonicParsing="false" prefWidth="100.0" styleClass="button1" text="Remover" AnchorPane.bottomAnchor="20.0" />
+   <Button fx:id="cancelarBtn" layoutX="252.0" layoutY="169.0" mnemonicParsing="false" prefWidth="100.0" text="Cancelar" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="103.0" />
+   <Text fx:id="nome" fill="#5b5b5b" layoutX="24.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="text" wrappingWidth="400.0">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Text>
+   <Text fx:id="cargo" fill="#5b5b5b" layoutX="24.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="text" wrappingWidth="400.0">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Text>
 </AnchorPane>

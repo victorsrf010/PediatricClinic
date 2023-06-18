@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="1017.0" prefWidth="300.0" stylesheets="@../../Styles/Funcionario/menu.css"
             xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="app.projeto.Controllers.Admin.menuController">
+            fx:controller="app.projeto.Controllers.Admin.MenuController">
    <Button fx:id="funcionariosButton" alignment="CENTER" layoutX="124.0" layoutY="26.0" mnemonicParsing="false"
            prefHeight="57.0" prefWidth="300.0" text="Funcionários" textAlignment="CENTER" wrapText="true"
            AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>

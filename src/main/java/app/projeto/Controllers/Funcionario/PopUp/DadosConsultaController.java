@@ -1,6 +1,7 @@
 package app.projeto.Controllers.Funcionario.PopUp;
 
 import app.projeto.Entities.ConsultaEntity;
+import app.projeto.Entities.DiagnosticoEntity;
 import app.projeto.Model;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -29,7 +30,20 @@ public class DadosConsultaController implements Initializable {
         String formattedDate = formatter.format(selectedConsulta.getDataConsulta());
         dtConsulta.setText(formattedDate);
         estado.setText(selectedConsulta.getEstado());
+
+        verDiagBtn.setOnAction(event -> handleVerDiagBtn());
     }
+
+    public void handleVerDiagBtn() {
+        ConsultaEntity selectedConsulta = Model.getInstance().getSelectedConsulta();
+        int diagId = selectedConsulta.getIdDiagnostico();
+        DiagnosticoEntity selectedDiag = Model.getInstance().getDiagnosticoById(diagId);
+        if (selectedDiag != null) {
+            Model.getInstance().setSelectedDiag(selectedDiag);
+            Model.getInstance().getViewFactory().showDiag();
+        }
+    }
+
 
 
 }

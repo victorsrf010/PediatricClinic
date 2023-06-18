@@ -117,4 +117,10 @@ public class DiagnosticoEntity {
     public int hashCode() {
         return Objects.hash(id, idUtente, idFuncionario, sintomas, tratamento, dataDiagnostico, observacoes, idConsulta);
     }
+
+    @Override
+    public String toString() {
+        return dataDiagnostico.toString();
+    }
+
 }

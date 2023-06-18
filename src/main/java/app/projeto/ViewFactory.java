@@ -1,11 +1,15 @@
 package app.projeto;
 
 import app.projeto.Controllers.Admin.AdminController;
+import app.projeto.Controllers.Admin.PopUp.editarFuncController;
+import app.projeto.Controllers.Admin.PopUp.removerFuncController;
 import app.projeto.Controllers.Funcionario.ConsultasController;
+import app.projeto.Controllers.Funcionario.DashboardController;
 import app.projeto.Controllers.Funcionario.FuncionarioController;
 import app.projeto.Controllers.Funcionario.PacientesController;
 import app.projeto.Controllers.Funcionario.PopUp.EditarDadosPacienteController;
 import app.projeto.Controllers.Medico.MedicoController;
+import app.projeto.Entities.FuncionarioEntity;
 import app.projeto.Entities.UtenteEntity;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -42,6 +46,7 @@ public class ViewFactory {
 
     private ConsultasController consultasController;
     private PacientesController pacientesController;
+    private DashboardController dashboardController;
 
     public ConsultasController getConsultasController() {
         if (consultasController == null) {
@@ -69,6 +74,19 @@ public class ViewFactory {
         return pacientesController;
     }
 
+    public DashboardController getDashboardController() {
+        if (dashboardController == null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/Funcionario/dashboard.fxml"));
+                dashboardView = loader.load();
+                dashboardController = loader.getController();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return dashboardController;
+    }
+
     public ViewFactory() {
         this.adminSelectedMenuItem = new SimpleStringProperty("");
         this.funcionarioSelectedMenuItem = new SimpleStringProperty("");
@@ -94,27 +112,45 @@ public class ViewFactory {
         return funcionariosView;
     }
 
-    public AnchorPane getPacientesAdminView() {
-        if (pacientesAdminView == null) {
-            try {
-                pacientesAdminView = new FXMLLoader(getClass().getResource("FXML/Admin/pacientes.fxml")).load();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return pacientesAdminView;
+    public void showAdicionarFuncionario() {
+        showPopUpWindow("FXML/Admin/PopUp/adicionarFunc.fxml", "Adicionar funcionario");
     }
 
-    public AnchorPane getConsultasAdminView() {
-        if (consultasAdminView == null) {
-            try {
-                consultasAdminView = new FXMLLoader(getClass().getResource("FXML/Admin/consultas.fxml")).load();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+    public void showRemoverFunc(FuncionarioEntity funcionario) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/Admin/PopUp/removerFunc.fxml"));
+        Scene scene = null;
+        try {
+            scene = new Scene(loader.load());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return consultasAdminView;
+        removerFuncController controller = loader.getController();
+        controller.initializeData(funcionario);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("Images/green_logo.png"))));
+        stage.setTitle("Editar funcionário");
+        stage.show();
     }
+
+    public void showEditarFuncionario(FuncionarioEntity funcionario) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/Admin/PopUp/editarFunc.fxml"));
+        Scene scene = null;
+        try {
+            scene = new Scene(loader.load());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        editarFuncController controller = loader.getController();
+        controller.initializeData(funcionario);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("Images/green_logo.png"))));
+        stage.setTitle("Editar funcionário");
+        stage.show();
+    }
+
+
 
 
 
@@ -248,6 +284,8 @@ public class ViewFactory {
         }
         return meusPacientesView;
     }
+
+
 
 
 
