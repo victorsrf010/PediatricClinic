@@ -94,4 +94,5 @@ public class PagamentoEntity {
     public int hashCode() {
         return Objects.hash(id, valor, tipoId, dataPagamento, consulta.getId());
     }
+
 }

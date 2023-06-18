@@ -1,8 +1,12 @@
 package app.projeto;
 
+import app.projeto.Entities.ConsultaEntity;
+
 public class Model {
+
     private static Model model;
     private final ViewFactory viewFactory;
+    private ConsultaEntity selectedConsulta;
 
     private Model() {
         this.viewFactory = new ViewFactory();
@@ -17,5 +21,13 @@ public class Model {
 
     public ViewFactory getViewFactory() {
         return viewFactory;
+    }
+
+    public ConsultaEntity getSelectedConsulta() {
+        return selectedConsulta;
+    }
+
+    public void setSelectedConsulta(ConsultaEntity selectedConsulta) {
+        this.selectedConsulta = selectedConsulta;
     }
 }

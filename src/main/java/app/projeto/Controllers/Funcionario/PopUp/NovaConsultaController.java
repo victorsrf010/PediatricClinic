@@ -3,13 +3,11 @@ package app.projeto.Controllers.Funcionario.PopUp;
 import app.projeto.Entities.ConsultaEntity;
 import app.projeto.Entities.FuncionarioEntity;
 import app.projeto.Entities.UtenteEntity;
-
 import app.projeto.Model;
 import com.calendarfx.model.Calendar;
 import com.calendarfx.model.CalendarSource;
 import com.calendarfx.model.Entry;
 import com.calendarfx.view.CalendarView;
-import com.calendarfx.view.DateControl;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -18,13 +16,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
-import javafx.util.StringConverter;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.ZonedDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.Collections;
 import java.util.List;
 

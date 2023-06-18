@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="1017.0" prefWidth="1620.0" style="-fx-background-color: d9d9d9;" stylesheets="@../../Styles/perfil.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.projeto.Controllers.Medico.consultaController">
+<AnchorPane prefHeight="1017.0" prefWidth="1620.0" style="-fx-background-color: d9d9d9;" stylesheets="@../../Styles/perfil.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.projeto.Controllers.Medico.ConsultaController">
    <children>
       <Text fill="#5b5b5b" layoutX="95.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Paciente atual" wrappingWidth="314.576171875" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="45.0">
          <font>

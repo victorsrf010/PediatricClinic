@@ -44,4 +44,9 @@ public class TipoPagamentoEntity {
     public int hashCode() {
         return Objects.hash(tipoId, metodo);
     }
+
+    @Override
+    public String toString() {
+        return metodo;
+    }
 }

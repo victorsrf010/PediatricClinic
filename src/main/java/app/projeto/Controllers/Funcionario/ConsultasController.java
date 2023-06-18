@@ -2,11 +2,9 @@ package app.projeto.Controllers.Funcionario;
 
 import app.projeto.Entities.ConsultaEntity;
 import app.projeto.Entities.PagamentoEntity;
+import app.projeto.JPAUtil;
 import app.projeto.Model;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import jakarta.persistence.TypedQuery;
+import jakarta.persistence.*;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -28,7 +26,6 @@ import java.util.ResourceBundle;
 
 public class ConsultasController implements Initializable {
     public Button agendarConsultaBtn;
-    public Button reagendarConsultaBtn;
     public TableView<ConsultaEntity> consultas;
     public TableColumn<ConsultaEntity, Integer> idClm;
     public TableColumn<ConsultaEntity, String> estadoClm;
@@ -39,6 +36,9 @@ public class ConsultasController implements Initializable {
     public TableColumn<ConsultaEntity, Time> horaClm;
     public TextField pesquisarTxtfd;
     public Button detalhesConsultaBtn;
+    public Button cancelarBtn;
+    public Button presenteBtn;
+    public Button pagarBtn;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -82,6 +82,11 @@ public class ConsultasController implements Initializable {
         });
 
         List<ConsultaEntity> allConsultas = loadAllConsultas();
+
+        cancelarBtn.setOnAction(event -> handleCancelarBtn());
+        presenteBtn.setOnAction(event -> handlePresenteBtn());
+        pagarBtn.setOnAction(event -> handlePagarBtn());
+        detalhesConsultaBtn.setOnAction(event -> handleDetalhesBtn());
 
         consultas.getItems().addAll(allConsultas);
 
@@ -156,6 +161,88 @@ public class ConsultasController implements Initializable {
         } finally {
             em.close();
             emf.close();
+        }
+    }
+
+    public void handlePresenteBtn() {
+        ConsultaEntity selectedConsulta = consultas.getSelectionModel().getSelectedItem();
+        if (selectedConsulta != null) {
+            EntityManagerFactory factory = JPAUtil.getEntityManagerFactory();
+            EntityManager entityManager = factory.createEntityManager();
+            EntityTransaction transaction = entityManager.getTransaction();
+            try {
+                transaction.begin();
+
+                // Retrieve the ConsultaEntity from the database using its ID
+                ConsultaEntity consultaEntity = entityManager.find(ConsultaEntity.class, selectedConsulta.getId());
+
+                // Check if the ConsultaEntity exists
+                if (consultaEntity != null) {
+                    // Update the state of the selected consulta to "Em espera"
+                    consultaEntity.setEstado("Em espera");
+                    entityManager.merge(consultaEntity);
+                    transaction.commit();
+
+                } else {
+                    // ConsultaEntity not found, handle the error accordingly
+                    System.out.println("ConsultaEntity not found");
+                }
+            } finally {
+                if (transaction.isActive()) {
+                    transaction.rollback();
+                }
+                entityManager.close();
+            }
+        }
+
+    }
+
+
+    public void handleCancelarBtn() {
+        ConsultaEntity selectedConsulta = consultas.getSelectionModel().getSelectedItem();
+        if (selectedConsulta != null) {
+            EntityManagerFactory factory = JPAUtil.getEntityManagerFactory();
+            EntityManager entityManager = factory.createEntityManager();
+            EntityTransaction transaction = entityManager.getTransaction();
+            try {
+                transaction.begin();
+
+                // Retrieve the ConsultaEntity from the database using its ID
+                ConsultaEntity consultaEntity = entityManager.find(ConsultaEntity.class, selectedConsulta.getId());
+
+                // Check if the ConsultaEntity exists
+                if (consultaEntity != null) {
+                    // Update the state of the selected consulta to "Cancelada"
+                    consultaEntity.setEstado("Cancelada");
+                    entityManager.merge(consultaEntity);
+                    transaction.commit();
+
+                } else {
+                    // ConsultaEntity not found, handle the error accordingly
+                    System.out.println("ConsultaEntity not found");
+                }
+            } finally {
+                if (transaction.isActive()) {
+                    transaction.rollback();
+                }
+                entityManager.close();
+            }
+        }
+    }
+
+    public void handlePagarBtn() {
+        ConsultaEntity selectedConsulta = consultas.getSelectionModel().getSelectedItem();
+        if (selectedConsulta != null) {
+            Model.getInstance().setSelectedConsulta(selectedConsulta);
+            Model.getInstance().getViewFactory().showPagarConsulta();
+        }
+    }
+
+    public void handleDetalhesBtn() {
+        ConsultaEntity selectedConsulta = consultas.getSelectionModel().getSelectedItem();
+        if (selectedConsulta != null) {
+            Model.getInstance().setSelectedConsulta(selectedConsulta);
+            Model.getInstance().getViewFactory().showDadosConsulta();
         }
     }
 

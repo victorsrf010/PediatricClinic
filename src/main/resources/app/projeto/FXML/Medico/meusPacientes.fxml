@@ -10,76 +10,72 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="1017.0" prefWidth="1620.0" style="-fx-background-color: d9d9d9;" stylesheets="@../../Styles/perfil.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.projeto.Controllers.Medico.meusPacientesController">
-   <children>
-      <TableView fx:id="utente" layoutX="60.0" layoutY="102.0" prefHeight="512.0" prefWidth="1500.0" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="102.0">
+<?import java.net.URL?>
+<AnchorPane prefHeight="1017.0" prefWidth="1620.0" style="-fx-background-color: d9d9d9;" stylesheets="@../../Styles/perfil.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.projeto.Controllers.Medico.MeusPacientesController">
+   <TableView fx:id="utente" layoutX="60.0" layoutY="102.0" prefHeight="512.0" prefWidth="1500.0" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="102.0">
+      <columns>
+         <TableColumn fx:id="nomeClm" prefWidth="246.0" text="Nome paciente" />
+         <TableColumn fx:id="nifClm" prefWidth="244.0" text="NIF" />
+         <TableColumn fx:id="dtNascimentoClm" prefWidth="295.0" text="Dt. nascimento" />
+         <TableColumn fx:id="repLegalClm" prefWidth="188.0" text="Rep. legal" />
+         <TableColumn fx:id="contatoRepLegalClm" prefWidth="210.0" text="Contato Rep. legal" />
+         <TableColumn fx:id="emailRepLegalClm" prefWidth="316.0" text="Email Rep. legal" />
+      </columns>
+   </TableView>
+   <TextField fx:id="pesquisarTxtfd" layoutX="961.0" layoutY="42.0" prefHeight="32.0" prefWidth="600.0" promptText="pesquisar..." style="-fx-background-radius: 20;" />
+   <AnchorPane layoutX="61.0" layoutY="640.0" prefHeight="296.0" prefWidth="870.0" AnchorPane.leftAnchor="61.0">
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#8fb9aa" height="296.0" layoutX="48.0" layoutY="24.0" stroke="#8fb9aa" strokeType="INSIDE" width="870.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Label layoutX="403.0" layoutY="4.0" text="Consultas">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TableView fx:id="ultimasConsultas" layoutY="26.0" prefHeight="230.0" prefWidth="870.0" style="-fx-background-radius: 20;">
          <columns>
-            <TableColumn fx:id="nomeClm" prefWidth="246.0" text="Nome paciente" />
-            <TableColumn fx:id="nifClm" prefWidth="244.0" text="NIF" />
-            <TableColumn fx:id="dtNascimentoClm" prefWidth="295.0" text="Dt. nascimento" />
-            <TableColumn fx:id="repLegalClm" prefWidth="188.0" text="Rep. legal" />
-            <TableColumn fx:id="contatoRepLegalClm" prefWidth="210.0" text="Contato Rep. legal" />
-            <TableColumn fx:id="emailRepLegalClm" prefWidth="316.0" text="Email Rep. legal" />
+            <TableColumn fx:id="dtPagamentoClm" prefWidth="154.0" text="Data" />
+            <TableColumn fx:id="drClm" prefWidth="350.0" text="Dr." />
+            <TableColumn fx:id="valorClm" prefWidth="84.0" text="Valor" />
+            <TableColumn fx:id="estadoPagClm" prefWidth="281.0" text="Estado pagamento" />
          </columns>
       </TableView>
-      <Button fx:id="adicionarPacBtn" layoutX="61.0" layoutY="42.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="228.0" style="-fx-background-radius: 20;" styleClass="button1" text="Adicionar paciente" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="42.0" />
-      <Button fx:id="editarBtn" layoutX="305.0" layoutY="42.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="150.0" style="-fx-background-radius: 20;" text="Editar" AnchorPane.leftAnchor="305.0" />
-      <TextField fx:id="pesquisarTxtfd" layoutX="961.0" layoutY="42.0" prefHeight="32.0" prefWidth="600.0" promptText="pesquisar..." style="-fx-background-radius: 20;" />
-      <AnchorPane layoutX="61.0" layoutY="640.0" prefHeight="296.0" prefWidth="580.0" AnchorPane.leftAnchor="61.0">
-         <children>
-            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#8fb9aa" height="296.0" layoutX="48.0" layoutY="24.0" stroke="#8fb9aa" strokeType="INSIDE" width="580.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="100.0" layoutY="196.0" stroke="WHITE" strokeType="INSIDE" width="580.0" />
-            <Label layoutX="236.0" layoutY="4.0" text="Ultima consulta">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="229.0" layoutY="26.0" stroke="WHITE" strokeType="INSIDE" width="580.0" />
-            <Text fx:id="nomeMedicoUltimaConsulta" fill="#797878" layoutX="14.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="252.13671875">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Text>
-            <Label layoutX="14.0" layoutY="33.0" prefWidth="158.0" text="Dr:" />
-            <Text fx:id="dataUltimaConsulta" fill="#797878" layoutX="14.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="252.13671875">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Text>
-            <Label layoutX="14.0" layoutY="90.0" prefWidth="158.0" text="Data:" />
-            <Button fx:id="verDiagnósticoBtn" layoutX="408.0" layoutY="242.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="158.0" style="-fx-background-radius: 20;" styleClass="button1" text="Ver diagnóstico" />
-         </children>
-      </AnchorPane>
-      <Button fx:id="historicoBtn" layoutX="1281.0" layoutY="640.0" mnemonicParsing="false" prefHeight="296.0" prefWidth="280.0" style="-fx-background-radius: 20;" text="Histórico consultas" />
-      <AnchorPane layoutX="671.0" layoutY="640.0" prefHeight="296.0" prefWidth="580.0">
-         <children>
-            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#8fb9aa" height="296.0" layoutX="48.0" layoutY="24.0" stroke="#8fb9aa" strokeType="INSIDE" width="580.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <Label layoutX="224.0" layoutY="4.0" text="Informações paciente">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="229.0" layoutY="26.0" stroke="WHITE" strokeType="INSIDE" width="580.0" />
-            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="100.0" layoutY="196.0" stroke="WHITE" strokeType="INSIDE" width="580.0" />
-            <Text fx:id="nomeInfo" fill="#797878" layoutX="14.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="252.13671875">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Text>
-            <Label layoutX="14.0" layoutY="35.0" prefWidth="158.0" text="Nome:" />
-            <Text fx:id="sexoInfo" fill="#797878" layoutX="14.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="252.13671875">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Text>
-            <Label layoutX="14.0" layoutY="92.0" prefWidth="158.0" text="Sexo:" />
-            <Text fx:id="idadeInfo" fill="#797878" layoutX="14.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="252.13671875">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Text>
-            <Label layoutX="14.0" layoutY="149.0" prefWidth="158.0" text="Idade:" />
-         </children>
-      </AnchorPane>
-   </children>
+      <Button fx:id="verDetalhes" layoutX="753.0" layoutY="260.0" mnemonicParsing="false" text="Ver detalhes" />
+   </AnchorPane>
+   <AnchorPane layoutX="981.0" layoutY="640.0" prefHeight="296.0" prefWidth="580.0" AnchorPane.leftAnchor="981.0">
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#8fb9aa" height="296.0" layoutX="48.0" layoutY="24.0" stroke="#8fb9aa" strokeType="INSIDE" width="580.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Label layoutX="224.0" layoutY="4.0" text="Informações paciente">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="207.0" layoutY="26.0" stroke="WHITE" strokeType="INSIDE" width="580.0" />
+      <Text fx:id="nomeInfo" fill="#797878" layoutX="13.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="550.13671875">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Label layoutX="14.0" layoutY="35.0" prefWidth="158.0" text="Nome:" />
+      <Text fx:id="sexoInfo" fill="#797878" layoutX="14.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="252.13671875">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Label layoutX="14.0" layoutY="92.0" prefWidth="158.0" text="Sexo:" />
+      <Text fx:id="idadeInfo" fill="#797878" layoutX="14.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="252.13671875">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Label layoutX="14.0" layoutY="149.0" prefWidth="158.0" text="Idade:" />
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="85.0" layoutY="211.0" stroke="WHITE" strokeType="INSIDE" width="580.0" />
+      <Text fx:id="knownDiseasesText" fill="#797878" layoutX="13.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="550.13671875">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Label layoutX="14.0" layoutY="211.0" prefWidth="158.0" text="Doenças conhecidas:" />
+   </AnchorPane>
+   <stylesheets>
+      <URL value="@../../Styles/perfil.css" />
+      <URL value="@../../Styles/Funcionario/dashboard.css" />
+   </stylesheets>
 </AnchorPane>

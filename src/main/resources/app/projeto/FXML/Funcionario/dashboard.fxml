@@ -11,87 +11,39 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="1017.0" prefWidth="1620.0" style="-fx-background-color: d9d9d9;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.projeto.Controllers.Funcionario.DashboardController">
-   <TableView fx:id="proximasConsultas" layoutX="135.0" layoutY="341.0" prefHeight="480.0" prefWidth="1100.0" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="294.0">
+   <TableView fx:id="proximasConsultas" layoutX="135.0" layoutY="124.0" prefHeight="800.0" prefWidth="1100.0" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="124.0">
      <columns>
        <TableColumn fx:id="horaMarcacao" prefWidth="150.0" text="Hora da marcação" />
        <TableColumn fx:id="nomePaciente" prefWidth="494.0" text="Nome paciente" />
          <TableColumn fx:id="nomeDoutor" prefWidth="455.0" text="Doutor:" />
      </columns>
    </TableView>
-   <Button fx:id="consultaSemMarcacaoBtn" layoutX="61.0" layoutY="821.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="540.0" style="-fx-background-radius: 25;" styleClass="button1" text="+ Consulta sem marcação" textAlignment="CENTER">
-      <font>
-         <Font size="26.0" />
-      </font>
-   </Button>
-   <Button fx:id="efetuarPagamentoBtn" layoutX="620.0" layoutY="821.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="540.0" style="-fx-background-radius: 25;" styleClass="button_pagamento" text="Efetuar pagamento" textAlignment="CENTER">
-      <font>
-         <Font size="26.0" />
-      </font>
-   </Button>
-   <AnchorPane layoutX="62.0" layoutY="66.0" prefHeight="140.0" prefWidth="269.0" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="66.0">
-      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="140.0" layoutX="-6.0" layoutY="27.0" stroke="WHITE" strokeType="INSIDE" styleClass="info" width="269.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Text layoutX="15.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Atendimentos:" wrappingWidth="239.576171875">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <Text fx:id="antendimentos" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="269.0">
-         <font>
-            <Font size="48.0" />
-         </font>
-      </Text>
-   </AnchorPane>
-   <AnchorPane layoutX="371.0" layoutY="68.0" prefHeight="140.0" prefWidth="269.0" AnchorPane.leftAnchor="337.0" AnchorPane.topAnchor="66.0">
-      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="140.0" layoutX="-6.0" layoutY="27.0" stroke="WHITE" strokeType="INSIDE" styleClass="info" width="269.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Text layoutX="15.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pacientes presentes:" wrappingWidth="239.576171875">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <Text fx:id="pacientesPresentes" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="269.0">
-         <font>
-            <Font size="48.0" />
-         </font>
-      </Text>
-   </AnchorPane>
-   <AnchorPane layoutX="630.0" layoutY="66.0" prefHeight="140.0" prefWidth="269.0" AnchorPane.leftAnchor="613.0" AnchorPane.topAnchor="66.0">
-      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="140.0" layoutX="-6.0" layoutY="27.0" stroke="WHITE" strokeType="INSIDE" styleClass="info" width="269.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Text layoutX="15.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pacientes em espera:" wrappingWidth="239.576171875">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <Text fx:id="pacientesEspera" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="269.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <font>
-            <Font size="48.0" />
-         </font>
-      </Text>
-   </AnchorPane>
-   <AnchorPane layoutX="932.0" layoutY="66.0" prefHeight="140.0" prefWidth="269.0" AnchorPane.leftAnchor="889.0" AnchorPane.topAnchor="66.0">
-      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="140.0" layoutX="-6.0" layoutY="27.0" stroke="WHITE" strokeType="INSIDE" width="269.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+   <Button fx:id="consultaSemMarcacaoBtn" layoutX="683.0" layoutY="75.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="210.0" style="-fx-background-radius: 10;" styleClass="button1" text="+ Consulta sem marcação" />
+   <AnchorPane layoutX="1221.0" layoutY="68.0" prefHeight="140.0" prefWidth="330.0" AnchorPane.leftAnchor="1221.0" AnchorPane.topAnchor="68.0">
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="140.0" layoutX="-6.0" layoutY="27.0" stroke="WHITE" strokeType="INSIDE" width="330.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <Text layoutX="15.0" layoutY="36.0" stroke="#d70c0c" strokeType="OUTSIDE" strokeWidth="0.0" text="Médicos disponíveis:" wrappingWidth="239.576171875">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fx:id="medicosDisponiveis" layoutY="92.0" stroke="TRANSPARENT" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="269.0">
+      <Text fx:id="medicosDisponiveis" layoutX="31.0" layoutY="93.0" stroke="TRANSPARENT" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="269.0">
          <font>
             <Font size="48.0" />
          </font>
       </Text>
    </AnchorPane>
-   <Text layoutX="95.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Próximas consultas" wrappingWidth="314.576171875" AnchorPane.leftAnchor="84.0" AnchorPane.topAnchor="248.0">
+   <Text layoutX="73.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Próximas consultas" wrappingWidth="314.576171875" AnchorPane.leftAnchor="73.0" AnchorPane.topAnchor="67.78515625">
       <font>
          <Font size="28.0" />
       </font>
    </Text>
-   <AnchorPane layoutX="1221.0" layoutY="66.0" prefHeight="855.0" prefWidth="330.0">
-      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="855.0" layoutX="14.0" layoutY="14.0" stroke="WHITE" strokeType="INSIDE" width="330.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <ListView fx:id="medicosPresentes" layoutX="15.0" prefHeight="805.0" prefWidth="280.0" style="-fx-background-radius: 25; -fx-background-color: #d9d9d9; -fx-border-radius: 25;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0" />
+   <AnchorPane layoutX="1221.0" layoutY="237.0" prefHeight="683.0" prefWidth="330.0">
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="683.0" layoutX="14.0" layoutY="14.0" stroke="WHITE" strokeType="INSIDE" width="330.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+      <ListView fx:id="medicosPresentes" layoutX="15.0" layoutY="36.0" prefHeight="630.0" prefWidth="280.0" style="-fx-background-radius: 25; -fx-background-color: #d9d9d9; -fx-border-radius: 25;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" />
    </AnchorPane>
-   <Button fx:id="cancelarBtn" layoutX="890.0" layoutY="254.0" mnemonicParsing="false" style="-fx-background-color: ff9090;" text="Cancelar" />
-   <Button fx:id="reagendarBtn" layoutX="978.0" layoutY="254.0" mnemonicParsing="false" text="Reagendar" />
-   <Button fx:id="presenteBtn" layoutX="1083.0" layoutY="254.0" mnemonicParsing="false" style="-fx-background-color: 8FB9AA;" text="Presente" />
+   <Button fx:id="cancelarBtn" layoutX="1012.0" layoutY="75.0" mnemonicParsing="false" style="-fx-background-color: ff9090;" text="Cancelar" />
+   <Button fx:id="presenteBtn" layoutX="915.0" layoutY="75.0" mnemonicParsing="false" style="-fx-background-color: 8FB9AA;" text="Presente" />
+   <Button fx:id="pagarBtn" layoutX="1103.0" layoutY="75.0" mnemonicParsing="false" style="-fx-background-color: 8FB9AA; -fx-background-radius: 10;" text="Pagar" />
    <stylesheets>
       <URL value="@../../Styles/Funcionario/dashboard.css" />
       <URL value="@../../Styles/perfil.css" />

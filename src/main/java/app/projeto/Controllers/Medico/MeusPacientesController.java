@@ -1,4 +1,4 @@
-package app.projeto.Controllers.Funcionario;
+package app.projeto.Controllers.Medico;
 
 import app.projeto.Entities.ConsultaEntity;
 import app.projeto.Entities.DoencasConhecidasEntity;
@@ -14,7 +14,10 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 import java.math.BigDecimal;
@@ -26,7 +29,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class PacientesController implements Initializable {
+public class MeusPacientesController implements Initializable {
 
     public TableView<UtenteEntity> utente;
     public TableColumn<UtenteEntity, String> nomeClm;
@@ -35,8 +38,6 @@ public class PacientesController implements Initializable {
     public TableColumn<UtenteEntity, String> repLegalClm;
     public TableColumn<UtenteEntity, String> contatoRepLegalClm;
     public TableColumn<UtenteEntity, String> emailRepLegalClm;
-    public Button adicionarPacBtn;
-    public Button editarBtn;
     public TextField pesquisarTxtfd;
     public TableView<ConsultaEntity> ultimasConsultas;
     public TableColumn<ConsultaEntity, Date> dtPagamentoClm;
@@ -47,7 +48,6 @@ public class PacientesController implements Initializable {
     public Text sexoInfo;
     public Text idadeInfo;
     public Text knownDiseasesText;
-    public Button pagarBtn;
     public Button verDetalhes;
 
     @Override
@@ -100,15 +100,12 @@ public class PacientesController implements Initializable {
             }
         });
 
-        adicionarPacBtn.setOnAction(event -> Model.getInstance().getViewFactory().showAdicionarPaciente());
-        editarBtn.setOnAction(event -> Model.getInstance().getViewFactory().showEditarPaciente(utente.getSelectionModel().getSelectedItem()));
-        pagarBtn.setOnAction(event -> handlePagarBtn());
         verDetalhes.setOnAction(event -> handleDetalhesBtn());
     }
 
     public void refreshTable() {
         utente.getItems().clear();
-        
+
         List<UtenteEntity> allUtentes = loadUtenteData();
         utente.getItems().addAll(allUtentes);
     }
@@ -236,14 +233,6 @@ public class PacientesController implements Initializable {
         } finally {
             em.close();
             emf.close();
-        }
-    }
-
-    public void handlePagarBtn() {
-        ConsultaEntity selectedConsulta = ultimasConsultas.getSelectionModel().getSelectedItem();
-        if (selectedConsulta != null) {
-            Model.getInstance().setSelectedConsulta(selectedConsulta);
-            Model.getInstance().getViewFactory().showPagarConsulta();
         }
     }
 

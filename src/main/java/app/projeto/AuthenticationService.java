@@ -56,5 +56,4 @@ public class AuthenticationService {
         return currentUser;
     }
 
-    // Other methods related to user management, session handling, etc.
 }

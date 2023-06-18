@@ -38,16 +38,12 @@ public class DashboardController implements Initializable {
     public TableColumn<ConsultaEntity, String> horaMarcacao;
     public TableColumn<ConsultaEntity, String> nomePaciente;
     public TableColumn<ConsultaEntity, String> nomeDoutor;
-    public Text antendimentos;
-    public Text pacientesPresentes;
-    public Text pacientesEspera;
     public Text medicosDisponiveis;
     public Button consultaSemMarcacaoBtn;
-    public Button efetuarPagamentoBtn;
     public ListView<FuncionarioEntity> medicosPresentes;
     public Button cancelarBtn;
-    public Button reagendarBtn;
     public Button presenteBtn;
+    public Button pagarBtn;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -62,8 +58,11 @@ public class DashboardController implements Initializable {
 
         cancelarBtn.setOnAction(event -> handleCancelarBtn());
         presenteBtn.setOnAction(event -> handlePresenteBtn());
-        reagendarBtn.setOnAction(event -> handleReagendarBtn());
+        pagarBtn.setOnAction(event -> handlePagarBtn());
 
+        consultaSemMarcacaoBtn.setOnAction(event ->{
+            Model.getInstance().getViewFactory().showNovaConsultaWindow();
+        });
 
         updateMedicosDisponiveis();
 
@@ -198,8 +197,12 @@ public class DashboardController implements Initializable {
         }
     }
 
-    public void handleReagendarBtn() {
-        Model.getInstance().getViewFactory().showReagendarWindow();
+    public void handlePagarBtn() {
+        ConsultaEntity selectedConsulta = proximasConsultas.getSelectionModel().getSelectedItem();
+        if (selectedConsulta != null) {
+            Model.getInstance().setSelectedConsulta(selectedConsulta);
+            Model.getInstance().getViewFactory().showPagarConsulta();
+        }
     }
 
 }

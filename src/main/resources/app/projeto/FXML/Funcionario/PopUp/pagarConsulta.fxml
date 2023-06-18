@@ -9,12 +9,12 @@
 
 <AnchorPane prefHeight="300.0" prefWidth="400.0" stylesheets="@../../../Styles/Funcionario/popup.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.projeto.Controllers.Funcionario.PopUp.PagarConsultaController">
     <Button fx:id="pagarBtn" layoutX="171.0" layoutY="233.0" mnemonicParsing="false" styleClass="button1" text="Pagar" />
-   <Text fx:id="valor" layoutX="175.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor">
+   <Text fx:id="valor" layoutX="175.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor" textAlignment="CENTER">
       <font>
          <Font size="20.0" />
       </font>
    </Text>
-   <Text fx:id="dtConsulta" layoutX="125.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data da consulta">
+   <Text fx:id="dtConsulta" layoutX="141.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data da consulta" textAlignment="CENTER" wrappingWidth="114.939453125">
       <font>
          <Font size="20.0" />
       </font>

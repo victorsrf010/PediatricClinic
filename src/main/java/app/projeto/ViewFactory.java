@@ -157,10 +157,6 @@ public class ViewFactory {
         return pacientesView;
     }
 
-    public void showReagendarWindow() {
-        showPopUpWindow("FXML/Funcionario/PopUp/reagendarConsulta.fxml", "Reagendar");
-    }
-
     public void showNovaConsultaWindow() {
         showPopUpWindow("FXML/Funcionario/PopUp/novaConsulta.fxml", "Nova consulta");
     }
@@ -186,6 +182,18 @@ public class ViewFactory {
         stage.show();
     }
 
+    public void showPagarConsulta(){
+        showPopUpWindow("FXML/Funcionario/PopUp/pagarConsulta.fxml", "Pagar");
+    }
+
+    public void showDadosConsulta(){
+        showPopUpWindow("FXML/Funcionario/PopUp/dadosConsulta.fxml", "Dados da consulta");
+    }
+
+    public void showDiag(){
+        showPopUpWindow("FXML/Funcionario/PopUp/diag.fxml", "Diagnóstico");
+    }
+
 
 
 
@@ -207,6 +215,48 @@ public class ViewFactory {
         }
         return perfilView;
     }
+
+    public AnchorPane getConsultaView() {
+        if (consultaView == null) {
+            try {
+                consultaView = new FXMLLoader(getClass().getResource("FXML/Medico/consulta.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return consultaView;
+    }
+
+    public AnchorPane getHorarioView() {
+        if (calendarioView == null) {
+            try {
+                calendarioView = new FXMLLoader(getClass().getResource("FXML/Medico/horario.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return calendarioView;
+    }
+
+    public AnchorPane getMeusPacientesView() {
+        if (meusPacientesView == null) {
+            try {
+                meusPacientesView = new FXMLLoader(getClass().getResource("FXML/Medico/meusPacientes.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return meusPacientesView;
+    }
+
+
+
+
+
+
+
+
+
 
     public void showLoginWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/login.fxml"));

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.calendarfx.view.CalendarView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="1017.0" prefWidth="1620.0" xmlns="http://javafx.com/javafx/19"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.projeto.Controllers.Medico.HorarioController">
+    <CalendarView fx:id="calendar" layoutX="10.0" layoutY="7.0" prefHeight="1017.0" prefWidth="1620.0"
+                  AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+</AnchorPane>

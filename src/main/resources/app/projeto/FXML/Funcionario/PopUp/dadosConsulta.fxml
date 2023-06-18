@@ -1,14 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="app.projeto.Controllers.Funcionario.PopUp.DadosConsultaController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="410.0" prefWidth="400.0" stylesheets="@../../../Styles/Funcionario/popup.css"
+            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="app.projeto.Controllers.Funcionario.PopUp.DadosConsultaController">
+   <Button fx:id="verDiagBtn" layoutX="116.0" layoutY="360.0" mnemonicParsing="false" styleClass="button1"
+           text="Visualizar diagnóstico"/>
+   <Text fx:id="dtConsulta" layoutX="141.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0"
+         text="Data da consulta" textAlignment="CENTER" wrappingWidth="114.939453125">
+      <font>
+         <Font size="20.0"/>
+      </font>
+   </Text>
+   <Label layoutX="35.0" layoutY="103.0" text="Dr:"/>
+   <Text fx:id="doutor" layoutX="35.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data da consulta"
+         wrappingWidth="350.0">
+      <font>
+         <Font size="20.0"/>
+      </font>
+   </Text>
+   <Label layoutX="35.0" layoutY="156.0" text="Paciente:"/>
+   <Text fx:id="paciente" layoutX="35.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data da consulta"
+         wrappingWidth="350.0">
+      <font>
+         <Font size="20.0"/>
+      </font>
+   </Text>
+   <Label layoutX="35.0" layoutY="220.0" text="Hora da marcação:"/>
+   <Text fx:id="hora" layoutX="35.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data da consulta"
+         wrappingWidth="350.0">
+      <font>
+         <Font size="20.0"/>
+      </font>
+   </Text>
+   <Label layoutX="35.0" layoutY="285.0" text="Estado:"/>
+   <Text fx:id="estado" layoutX="35.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data da consulta"
+         wrappingWidth="350.0">
+      <font>
+         <Font size="20.0"/>
+      </font>
+   </Text>
 </AnchorPane>
