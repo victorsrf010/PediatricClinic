@@ -5,8 +5,6 @@ import app.projeto.JPAUtil;
 import app.projeto.Model;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;

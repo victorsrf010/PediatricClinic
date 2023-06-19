@@ -1,10 +1,8 @@
 package app.projeto.Controllers.Admin.PopUp;
 
 import app.projeto.Entities.FuncionarioEntity;
-import app.projeto.Entities.UtenteEntity;
 import app.projeto.JPAUtil;
 import app.projeto.Model;
-import com.sun.javafx.css.StyleManager;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import javafx.collections.FXCollections;
@@ -71,7 +69,6 @@ public class editarFuncController implements Initializable {
     }
 
     public void updateFuncionarioInfo() {
-        // Gather the new data from the fields
         String newNome = nomeTxtfd.getText();
         String newNif = nifTxtfd.getText();
         String newTel = telTxtfd.getText();
@@ -81,7 +78,6 @@ public class editarFuncController implements Initializable {
         String newCargo = cargoChoicebox.getValue();
         String newLocalidade = localidade.getText();
 
-        // Map the cargo to its respective IDTipo
         int newTipoId;
         if ("Médico".equals(newCargo)) {
             newTipoId = 1;
@@ -93,7 +89,6 @@ public class editarFuncController implements Initializable {
             newTipoId = 0; // default value, adjust as needed
         }
 
-        // Now update the FuncionarioEntity object
         currentFunc.setNome(newNome);
         currentFunc.setNif(newNif);
         currentFunc.setNumeroTelemovel(newTel);
@@ -103,7 +98,6 @@ public class editarFuncController implements Initializable {
         currentFunc.setTipoId(newTipoId);
         currentFunc.setCodigoPostal(newCodPostal);
 
-        // Update the entity in the database
         EntityManagerFactory factory = JPAUtil.getEntityManagerFactory();
         EntityManager entityManager = factory.createEntityManager();
         try {

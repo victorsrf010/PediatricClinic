@@ -145,16 +145,13 @@ public class DashboardController implements Initializable {
 
                 ConsultaEntity consultaEntity = entityManager.find(ConsultaEntity.class, selectedConsulta.getId());
 
-                // Check if the ConsultaEntity exists
                 if (consultaEntity != null) {
-                    // Update the state of the selected consulta to "Em espera"
                     consultaEntity.setEstado("Em espera");
                     entityManager.merge(consultaEntity);
                     transaction.commit();
                     proximasConsultas.getItems().remove(selectedConsulta);
 
                 } else {
-                    // ConsultaEntity not found, handle the error accordingly
                     System.out.println("ConsultaEntity not found");
                 }
             } finally {
@@ -177,20 +174,15 @@ public class DashboardController implements Initializable {
             try {
                 transaction.begin();
 
-                // Retrieve the ConsultaEntity from the database using its ID
                 ConsultaEntity consultaEntity = entityManager.find(ConsultaEntity.class, selectedConsulta.getId());
 
-                // Check if the ConsultaEntity exists
                 if (consultaEntity != null) {
-                    // Update the state of the selected consulta to "Cancelada"
                     consultaEntity.setEstado("Cancelada");
                     entityManager.merge(consultaEntity);
                     transaction.commit();
 
-                    // Remove the selected consulta from the TableView
                     proximasConsultas.getItems().remove(selectedConsulta);
                 } else {
-                    // ConsultaEntity not found, handle the error accordingly
                     System.out.println("ConsultaEntity not found");
                 }
             } finally {

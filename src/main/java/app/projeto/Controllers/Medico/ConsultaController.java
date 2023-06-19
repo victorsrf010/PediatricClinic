@@ -219,7 +219,6 @@
             tratamentoTxtArea.setText("");
         }
 
-
         private void clearNextPatientInfo() {
             nomeProx.setText("");
             sexoProx.setText("");

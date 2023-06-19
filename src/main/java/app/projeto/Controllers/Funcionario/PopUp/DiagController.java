@@ -1,6 +1,5 @@
 package app.projeto.Controllers.Funcionario.PopUp;
 
-import app.projeto.Entities.ConsultaEntity;
 import app.projeto.Entities.DiagnosticoEntity;
 import app.projeto.Model;
 import javafx.fxml.Initializable;

@@ -3,7 +3,6 @@ package app.projeto.Controllers.Medico;
 import app.projeto.AuthenticationService;
 import app.projeto.Entities.ConsultaEntity;
 import app.projeto.Entities.FuncionarioEntity;
-import app.projeto.Model;
 import com.calendarfx.model.Calendar;
 import com.calendarfx.model.CalendarSource;
 import com.calendarfx.model.Entry;
@@ -27,7 +26,6 @@ public class HorarioController {
         calendarSource.getCalendars().add(consultasCalendar);
         calendar.getCalendarSources().add(calendarSource);
 
-        // Assume you have a method to get current Funcionario
         FuncionarioEntity currentFuncionario = AuthenticationService.getCurrentUser();
         if (currentFuncionario != null) {
             updateCalendarEntries(currentFuncionario);
@@ -43,7 +41,6 @@ public class HorarioController {
             entry.changeStartTime(consulta.getHoraConsulta().toLocalTime());
             entry.changeEndTime(consulta.getHoraConsulta().toLocalTime().plusMinutes(30));
 
-            // Set the title to the name of the Utente
             entry.setTitle(consulta.getUtente().getNome());
 
             consulta.setFuncionario(funcionario);

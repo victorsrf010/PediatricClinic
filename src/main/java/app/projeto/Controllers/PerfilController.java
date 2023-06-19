@@ -53,7 +53,6 @@ public class PerfilController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
         nome.setText(user.getNome());
         id.setText(String.valueOf(user.getId()));
         checkCargo();
@@ -108,14 +107,11 @@ public class PerfilController implements Initializable {
         String newPassword = newPassHidden.getText();
         String confirmNewPassword = confirmNewPassHidden.getText();
 
-        // Check if the new password and confirm new password match
         if (!newPassword.equals(confirmNewPassword)) {
-            // Show an error message or perform appropriate action
             matchError.setText("Passwords não coincidem");
             return;
         }
 
-        // Update the password in the database
         FuncionarioEntity currentUser = AuthenticationService.getCurrentUser();
         currentUser.setPassword(newPassword);
 
@@ -128,7 +124,6 @@ public class PerfilController implements Initializable {
             passHidden.setText(newPassword);
             matchError.setText("Password alterada com sucesso");
         } catch (Exception e) {
-            // Handle the exception appropriately
             matchError.setText("Erro na alteração da password");
             entityManager.getTransaction().rollback();
         } finally {
@@ -140,14 +135,11 @@ public class PerfilController implements Initializable {
         String newMail = newEmail.getText();
         String confirmNewMail = newEmailConfirmation.getText();
 
-        // Check if the new email and confirm new email match
         if (!newMail.equals(confirmNewMail)) {
-            // Show an error message or perform appropriate action
             matchErrorEmail.setText("Emails não coincidem");
             return;
         }
 
-        // Update the email in the database
         FuncionarioEntity currentUser = AuthenticationService.getCurrentUser();
         currentUser.setEmail(newMail);
 
@@ -160,7 +152,6 @@ public class PerfilController implements Initializable {
             matchErrorEmail.setText("Email alterado com sucesso");
             email.setText(newMail);
         } catch (Exception e) {
-            // Handle the exception appropriately
             matchErrorEmail.setText("Erro na alteração do email");
             entityManager.getTransaction().rollback();
         } finally {
@@ -193,7 +184,6 @@ public class PerfilController implements Initializable {
             entityManager.merge(currentUser);
             entityManager.getTransaction().commit();
 
-            // Update the codPostal value in the user interface
             morada.setText(rua);
             localidade.setText(localidadeK);
             infoMessageMorada.setText("Morada atualizada com sucesso");
@@ -209,7 +199,6 @@ public class PerfilController implements Initializable {
     public void changeNtelemovel() {
         String newtel = newTel.getText();
 
-        // Update the number in the database
         FuncionarioEntity currentUser = AuthenticationService.getCurrentUser();
         currentUser.setNumeroTelemovel(newtel);
 
@@ -222,7 +211,6 @@ public class PerfilController implements Initializable {
             infoMessageTel.setText("Número alterado com sucesso");
             ntelemovel.setText(newtel);
         } catch (Exception e) {
-            // Handle the exception appropriately
             infoMessageTel.setText("Erro na alteração do número");
             entityManager.getTransaction().rollback();
         } finally {

@@ -51,7 +51,6 @@ public class EditarDadosPacienteController implements Initializable {
     }
 
     public void updateUtenteInfo() {
-        // Gather the new data from the fields
         String newNome = nomeTxtfd.getText();
         String newNif = nifTxtfd.getText();
         String newNomeRepLegal = nomeRepLegalTxtfd.getText();
@@ -60,7 +59,6 @@ public class EditarDadosPacienteController implements Initializable {
         String newSexo = sexoChoicebox.getValue();
         Date newDtNascimento = Date.valueOf(dtNascimentoPicker.getValue());
 
-        // Now update the UtenteEntity object
         currentUtente.setNome(newNome);
         currentUtente.setNif(newNif);
         currentUtente.setNomeRepresentanteLegal(newNomeRepLegal);
@@ -69,7 +67,6 @@ public class EditarDadosPacienteController implements Initializable {
         currentUtente.setSexo(newSexo);
         currentUtente.setDataNascimento(newDtNascimento);
 
-        // Update the entity in the database
         EntityManagerFactory factory = JPAUtil.getEntityManagerFactory();
         EntityManager entityManager = factory.createEntityManager();
         try {
@@ -77,9 +74,7 @@ public class EditarDadosPacienteController implements Initializable {
             entityManager.merge(currentUtente);
             entityManager.getTransaction().commit();
 
-            // Here you can show a success message if you want
         } catch (Exception e) {
-            // Handle the exception appropriately
             entityManager.getTransaction().rollback();
         } finally {
             entityManager.close();

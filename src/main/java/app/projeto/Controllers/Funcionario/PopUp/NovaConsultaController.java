@@ -65,14 +65,12 @@ public class NovaConsultaController {
             currentEntry = new Entry<>();
             currentEntry.changeStartDate(zonedDateTime.toLocalDate());
             currentEntry.changeStartTime(zonedDateTime.toLocalTime());
-            currentEntry.changeEndTime(zonedDateTime.toLocalTime().plusMinutes(30)); // Set default duration to 1 hour.
+            currentEntry.changeEndTime(zonedDateTime.toLocalTime().plusMinutes(30));
 
-            // Set the title to the name of the currently selected UtenteEntity
             UtenteEntity selectedUtente = utenteChoicebox.getValue();
             if (selectedUtente != null) {
                 currentEntry.setTitle(selectedUtente.getNome());
             } else {
-                // Set a default title if no UtenteEntity is selected
                 currentEntry.setTitle("Nova consulta");
             }
 
@@ -94,14 +92,13 @@ public class NovaConsultaController {
             LocalDate startDate = consulta.getDataConsulta().toLocalDate();
             LocalTime startTime = consulta.getHoraConsulta().toLocalTime();
             LocalDateTime startDateTime = LocalDateTime.of(startDate, startTime);
-            LocalDateTime endDateTime = startDateTime.plusMinutes(30);  // Or whatever your end time is
+            LocalDateTime endDateTime = startDateTime.plusMinutes(30);
 
             entry.changeStartDate(startDateTime.toLocalDate());
             entry.changeStartTime(startDateTime.toLocalTime());
             entry.changeEndDate(endDateTime.toLocalDate());
             entry.changeEndTime(endDateTime.toLocalTime());
 
-            // Set the title to the name of the Utente
             entry.setTitle(consulta.getUtente().getNome());
 
             consulta.setFuncionario(funcionario);

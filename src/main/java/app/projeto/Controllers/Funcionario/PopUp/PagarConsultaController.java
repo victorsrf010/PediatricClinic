@@ -85,7 +85,7 @@ public class PagarConsultaController implements Initializable {
 
                         TipoPagamentoEntity selectedTipoPagamento = metodoPag.getSelectionModel().getSelectedItem();
                         if (selectedTipoPagamento != null) {
-                            pagamento.setTipoId(selectedTipoPagamento.getTipoId()); // assuming getId() method exists in TipoPagamentoEntity
+                            pagamento.setTipoId(selectedTipoPagamento.getTipoId());
                         }
 
                         pagamento.setDataPagamento(new java.sql.Date(System.currentTimeMillis()));

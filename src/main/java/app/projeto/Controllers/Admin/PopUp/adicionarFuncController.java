@@ -1,13 +1,14 @@
 package app.projeto.Controllers.Admin.PopUp;
 
 import app.projeto.Entities.FuncionarioEntity;
-import app.projeto.Entities.UtenteEntity;
 import app.projeto.JPAUtil;
 import app.projeto.Model;
 import jakarta.persistence.EntityManager;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import javafx.scene.text.Text;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -54,7 +55,7 @@ public class adicionarFuncController implements Initializable{
             } else if ("Admin".equals(newCargo)) {
                 newTipoId = 3;
             } else {
-                newTipoId = 0; // default value, adjust as needed
+                newTipoId = 0;
             }
             newFunc.setTipoId(newTipoId);
 

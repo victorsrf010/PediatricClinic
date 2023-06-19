@@ -6,8 +6,6 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
 
-
-
 public class AuthenticationService {
     static EntityManagerFactory factory = JPAUtil.getEntityManagerFactory();
     public static FuncionarioEntity currentUser;
@@ -31,7 +29,7 @@ public class AuthenticationService {
             entityManager.getTransaction().commit();
             return user;
         } catch (NoResultException e) {
-            return null; // User not found
+            return null;
         } finally {
             if (entityManager.isOpen()) {
                 entityManager.close();

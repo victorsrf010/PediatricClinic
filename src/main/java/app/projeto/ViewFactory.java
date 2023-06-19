@@ -23,15 +23,11 @@ import java.util.Objects;
 
 public class ViewFactory {
 
-    //Vistas funcionario
-
     private final StringProperty adminSelectedMenuItem;
     private final StringProperty funcionarioSelectedMenuItem;
     private final StringProperty medicoSelectedMenuItem;
 
     private AnchorPane funcionariosView;
-    private AnchorPane pacientesAdminView;
-    private AnchorPane consultasAdminView;
 
     private AnchorPane dashboardView;
     private AnchorPane pacientesView;
@@ -42,7 +38,6 @@ public class ViewFactory {
     private AnchorPane calendarioView;
 
     private AnchorPane perfilView;
-
 
     private ConsultasController consultasController;
     private PacientesController pacientesController;
@@ -152,8 +147,6 @@ public class ViewFactory {
 
 
 
-
-
     //  ** ** Funcionartio ** **
 
     public StringProperty getFuncionarioSelectedMenuItem() {
@@ -232,9 +225,6 @@ public class ViewFactory {
 
 
 
-
-
-
     // ** ** Medico ** **
 
     public StringProperty getMedicoSelectedMenuItem() {
@@ -288,14 +278,6 @@ public class ViewFactory {
 
 
 
-
-
-
-
-
-
-
-
     public void showLoginWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/login.fxml"));
         Scene scene = null;
@@ -332,7 +314,6 @@ public class ViewFactory {
         createStage(loader);
     }
 
-
     private void createStage(FXMLLoader loader) {
         Scene scene = null;
         try {
@@ -362,7 +343,6 @@ public class ViewFactory {
         stage.setTitle(title);
         stage.show();
     }
-
 
     public void closeStage(Stage stage) {
         stage.close();

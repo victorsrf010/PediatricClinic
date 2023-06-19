@@ -152,7 +152,6 @@ public class MeusPacientesController implements Initializable {
         }
     }
 
-
     private void updateUtenteDetails(UtenteEntity utente) {
         nomeInfo.setText(utente.getNome());
         sexoInfo.setText(utente.getSexo());
@@ -200,7 +199,6 @@ public class MeusPacientesController implements Initializable {
 
         loadConsultas(utente);
     }
-
 
     private void clearUtenteDetails() {
         nomeInfo.setText("");

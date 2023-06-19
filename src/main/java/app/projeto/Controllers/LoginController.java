@@ -36,13 +36,11 @@ public class LoginController implements Initializable {
         int id = Integer.parseInt(numFuncionario.getText());
         String pass = password.getText();
 
-        // Call the service to check the user credentials
         FuncionarioEntity funcionario = AuthenticationService.findFuncionarioByIdAndPassword(id, pass);
 
         if (funcionario != null) {
             Stage stage = (Stage) errorText.getScene().getWindow();
             Model.getInstance().getViewFactory().closeStage(stage);
-            // Check the ID_TIPOFUNCIONARIO of the user and open the corresponding window
             switch (funcionario.getTipoId()) {
                 case 3 -> Model.getInstance().getViewFactory().showAdminWindow();
                 case 2 -> Model.getInstance().getViewFactory().showFuncionarioWindow();

@@ -40,8 +40,6 @@ public class MenuController implements Initializable {
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
 
-
-
         desconectarButton.setOnAction(actionEvent -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Desconectar");
@@ -66,7 +64,6 @@ public class MenuController implements Initializable {
         Model.getInstance().getViewFactory().closeStage(stage);
         Model.getInstance().getViewFactory().showLoginWindow();
     }
-
 
     private void addListeneres() {
         funcionariosButton.setOnAction(actionEvent -> onFuncionarios());
