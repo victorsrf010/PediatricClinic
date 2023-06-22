@@ -12,6 +12,9 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Collections;
 import java.util.List;
 
@@ -37,9 +40,16 @@ public class HorarioController {
         List<ConsultaEntity> consultas = loadConsultasForFuncionario(funcionario);
         for (ConsultaEntity consulta : consultas) {
             Entry<ConsultaEntity> entry = new Entry<>();
-            entry.changeStartDate(consulta.getDataConsulta().toLocalDate());
-            entry.changeStartTime(consulta.getHoraConsulta().toLocalTime());
-            entry.changeEndTime(consulta.getHoraConsulta().toLocalTime().plusMinutes(30));
+
+            LocalDate startDate = consulta.getDataConsulta().toLocalDate();
+            LocalTime startTime = consulta.getHoraConsulta().toLocalTime();
+            LocalDateTime startDateTime = LocalDateTime.of(startDate, startTime);
+            LocalDateTime endDateTime = startDateTime.plusMinutes(30);
+
+            entry.changeStartDate(startDateTime.toLocalDate());
+            entry.changeStartTime(startDateTime.toLocalTime());
+            entry.changeEndDate(endDateTime.toLocalDate());
+            entry.changeEndTime(endDateTime.toLocalTime());
 
             entry.setTitle(consulta.getUtente().getNome());
 

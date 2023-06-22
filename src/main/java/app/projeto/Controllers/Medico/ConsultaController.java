@@ -74,13 +74,14 @@
                 TypedQuery<ConsultaEntity> query = em.createQuery(
                         "SELECT c FROM ConsultaEntity c " +
                                 "WHERE c.funcionario.id = :funcionarioId " +
-                                "AND c.estado != :estado " +
+                                "AND c.estado NOT IN (:estado1, :estado2) " +
                                 "AND c.dataConsulta = :today " +
                                 "ORDER BY c.horaConsulta",
                         ConsultaEntity.class
                 );
                 query.setParameter("funcionarioId", funcionario.getId());
-                query.setParameter("estado", "Finalizada");
+                query.setParameter("estado1", "finalizada");
+                query.setParameter("estado2", "cancelada");
                 query.setParameter("today", java.sql.Date.valueOf(LocalDate.now()));
 
                 List<ConsultaEntity> consultas = query.getResultList();
@@ -96,6 +97,7 @@
                 emf.close();
             }
         }
+
 
         private void updateCurrentPatientInfo(ConsultaEntity currentConsulta) {
             UtenteEntity currentPatient = currentConsulta.getUtente();
