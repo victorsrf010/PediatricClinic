@@ -41,9 +41,10 @@ public class adicionarFuncController implements Initializable{
             newFunc.setNumeroTelemovel(telTxtfd.getText());
             newFunc.setEmail(emailTxtfd.getText());
             newFunc.setRua(ruaTxtfd.getText());
-            newFunc.setLocalidade(codPostalTxtfd.getText());
+            newFunc.setCodigoPostal(codPostalTxtfd.getText());
             newFunc.setLocalidade(localidade.getText());
             newFunc.setEstado(false);
+            newFunc.setPassword("0");
 
 
             String newCargo = cargoChoicebox.getValue();
